@@ -1,0 +1,114 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Callout    from '@components/Callout.astro';
+import StatCard   from '@components/StatCard.astro';
+---
+<BaseLayout title="For Advocates" activePath="/advocates/">
+
+  <div class="page-hero px-6">
+    <div class="max-w-3xl mx-auto">
+      <span class="section-label">For DV counselors, shelter staff &amp; social workers</span>
+      <h1>Equip your clients with financial privacy</h1>
+      <p class="text-gray-600 text-lg mt-2 leading-relaxed">
+        Financial control is the #1 barrier to leaving. This section gives you everything you need
+        to teach survivors about Zcash — including a complete 30-minute workshop curriculum.
+      </p>
+    </div>
+  </div>
+
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <Callout type="tip" label="Why Zcash — not just any crypto">
+        <p>
+          Unlike Bitcoin (which creates a permanent, public record that abusers can monitor),
+          Zcash shielded transactions are mathematically invisible. The Zodl wallet defaults to shielded
+          for every transaction — no technical knowledge required from clients.
+          This is not a workaround. It is how the technology was designed.
+        </p>
+      </Callout>
+
+      <div class="grid sm:grid-cols-2 gap-6 mt-10">
+        {[
+          { icon:'📋', title:'30-Minute Workshop Curriculum', href:'/advocates/workshop-guide/',
+            body:'A complete facilitator guide with slide notes, client handouts, and a live wallet demo. No crypto knowledge required to teach it.', cta:'View workshop guide →' },
+          { icon:'💳', title:"Set Up Your Shelter's ZEC Wallet", href:'/advocates/workshop-guide/#shelter-wallet',
+            body:'Accept ZEC donations from supporters and distribute emergency funds to clients — step-by-step for non-technical staff.', cta:'Shelter wallet guide →' },
+          { icon:'📥', title:'Printable Client Handouts', href:'/download/',
+            body:'One-page summaries of each module. Print and hand out in sessions — no device required. Available in English, Spanish, and French.', cta:'Download handouts →' },
+          { icon:'🏛️', title:'Refer Clients to Emergency ZEC', href:'/get-help/',
+            body:'Partner organizations can provide small amounts of ZEC to help clients start a shielded wallet.', cta:'Emergency resources →' },
+        ].map(({ icon, title, href, body, cta }) => (
+          <div class="resource-card">
+            <span class="text-3xl" aria-hidden="true">{icon}</span>
+            <h4 class="text-shield-deep">{title}</h4>
+            <p class="text-sm text-gray-500 leading-relaxed flex-1">{body}</p>
+            <a href={href} class="btn btn-primary btn-sm self-start mt-2">{cta}</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6 bg-shield-xlight">
+    <div class="max-w-2xl mx-auto">
+      <span class="section-label">Why this matters for your clients</span>
+      <h2>The financial privacy gap in DV services</h2>
+      <p class="text-gray-600 mt-4 leading-relaxed">
+        Most DV organizations help clients with safety planning, housing, legal advocacy, and counseling.
+        But financial privacy tools are almost never included — and this gap is costing survivors their safety.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-4 my-8">
+        <StatCard num="99%" label="of DV cases involve financial abuse" />
+        <StatCard num="$0"  label="is what most survivors have in private savings when they try to leave" />
+        <StatCard num="72%" label="of survivors return due to financial dependence" />
+      </div>
+      <p class="text-gray-600 leading-relaxed">
+        Teaching a client about Zcash takes 30 minutes.
+        Helping them set up a wallet takes 10 minutes.
+        The result: a private, growing fund their partner cannot see, freeze, or steal.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-2xl mx-auto">
+      <span class="section-label">For your organization</span>
+      <h2>Accepting ZEC donations for your shelter</h2>
+      <p class="text-gray-600 mt-4 leading-relaxed">
+        In 2026, a women's shelter maintained operations through Zcash donations after losing government funding.
+        Any DV organization can accept ZEC donations — and distribute them to clients as emergency grants.
+      </p>
+      <h3 class="mt-8">Benefits for shelters:</h3>
+      <ul class="checklist mt-4">
+        <li>Donors can give anonymously — expanding your donor pool</li>
+        <li>Funds arrive within minutes of donation — useful in emergencies</li>
+        <li>No payment processor fees eating into donations</li>
+        <li>Funds can be distributed to clients privately — no bank transfer paper trail</li>
+        <li>ZEC can be converted to USD on any major exchange when needed</li>
+      </ul>
+      <a href="/advocates/workshop-guide/#shelter-wallet" class="btn btn-primary mt-8">
+        Set up your shelter wallet →
+      </a>
+    </div>
+  </section>
+
+  <section class="py-16 px-6 bg-sand">
+    <div class="max-w-2xl mx-auto">
+      <span class="section-label">Ready to teach?</span>
+      <h2>Your next step</h2>
+      <p class="text-gray-600 mt-4 leading-relaxed">
+        The workshop guide has everything you need to run a 30-minute session with no prior crypto knowledge.
+      </p>
+      <ul class="checklist my-6">
+        <li>Facilitator script with timing cues</li>
+        <li>Plain-language explanations for every concept</li>
+        <li>A live wallet demo walkthrough</li>
+        <li>Answers to common client questions</li>
+        <li>Printable one-page handout for clients to take home</li>
+        <li>Instructions for setting up your shelter's own ZEC wallet</li>
+      </ul>
+      <a href="/advocates/workshop-guide/" class="btn btn-primary btn-lg">Open the Workshop Guide →</a>
+    </div>
+  </section>
+
+</BaseLayout>
