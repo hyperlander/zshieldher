@@ -1,0 +1,98 @@
+---
+interface Props {
+  activePath?: string;
+}
+const { activePath = '' } = Astro.props;
+
+const navLinks = [
+  { href: '/learn/',     label: 'Learn' },
+  { href: '/advocates/', label: 'For Advocates' },
+  { href: '/donors/',    label: 'Donors & Allies' },
+];
+---
+<header class="site-header">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-2 py-3">
+
+    <!-- Logo -->
+    <a href="/" class="site-logo flex-shrink-0">
+      <span aria-hidden="true">🛡</span>
+      <span>
+        ShieldHer
+        <span class="block text-[0.6rem] font-normal opacity-70 tracking-widest uppercase leading-none">
+          A Zcash Education Initiative
+        </span>
+      </span>
+    </a>
+
+    <!-- Right-side controls -->
+    <div class="flex items-center gap-2 sm:gap-3">
+
+      <!-- Desktop nav (hidden on mobile) -->
+      <nav
+        id="site-nav"
+        class="hidden md:flex items-center gap-5"
+        aria-label="Main navigation"
+      >
+        {navLinks.map(({ href, label }) => (
+          <a
+            href={href}
+            class:list={['nav-link', { active: activePath.startsWith(href) }]}
+          >
+            {label}
+          </a>
+        ))}
+        <a href="/get-help/" class="nav-cta-link">Get Help Now</a>
+      </nav>
+
+      <!-- Escape button — always visible, safety-critical -->
+      <button
+        id="escape-btn"
+        class="escape-btn"
+        title="Leave this page immediately (Alt+X)"
+        aria-label="Leave this page immediately"
+      >
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+        <span class="hidden sm:inline">Leave this page</span>
+      </button>
+
+      <!-- Hamburger (mobile only) -->
+      <button
+        id="nav-toggle"
+        class="md:hidden text-white p-1.5 rounded"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <svg width="20" height="20" viewBox="0 0 22 22" fill="currentColor" aria-hidden="true">
+          <rect y="3"  width="22" height="2.5" rx="1.25"/>
+          <rect y="10" width="22" height="2.5" rx="1.25"/>
+          <rect y="17" width="22" height="2.5" rx="1.25"/>
+        </svg>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Mobile nav drawer -->
+  <div
+    id="mobile-nav"
+    class="hidden md:hidden bg-shield-deep border-t border-white/10 px-6 py-4 flex flex-col gap-3"
+    aria-label="Mobile navigation"
+  >
+    {navLinks.map(({ href, label }) => (
+      <a href={href} class="nav-link text-base py-1 border-b border-white/10 pb-3">{label}</a>
+    ))}
+    <a href="/get-help/" class="nav-cta-link self-start mt-1">Get Help Now</a>
+  </div>
+</header>
+
+<script>
+  const toggle   = document.getElementById('nav-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  toggle?.addEventListener('click', () => {
+    const isOpen = mobileNav?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>

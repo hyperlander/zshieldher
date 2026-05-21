@@ -1,0 +1,55 @@
+---
+const modules = [
+  { href: '/learn/1-why-privacy/',    label: '1 — Why Privacy' },
+  { href: '/learn/2-crypto-trap/',    label: '2 — Crypto Trap' },
+  { href: '/learn/3-what-zcash/',     label: '3 — What Zcash Does' },
+  { href: '/learn/4-wallet-setup/',   label: '4 — Wallet Setup' },
+  { href: '/learn/5-receiving/',      label: '5 — Receiving' },
+  { href: '/learn/6-spending/',       label: '6 — Spending' },
+  { href: '/learn/7-exit-plan/',      label: '7 — Exit Plan' },
+];
+const help = [
+  { href: '/get-help/',       label: 'Emergency Resources' },
+  { href: '/advocates/',      label: 'For Advocates' },
+  { href: '/donors/',         label: 'Donors & Allies' },
+  { href: '/donors/#donate',  label: 'Donate ZEC to ShieldHer' },
+  { href: '/download/',       label: 'Download Offline' },
+];
+---
+<footer class="site-footer mt-auto">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div>
+      <div class="flex items-center gap-2 font-extrabold text-white text-base mb-3">
+        <span aria-hidden="true">🛡</span> ShieldHer
+      </div>
+      <p class="text-sm leading-relaxed">
+        A Zcash education initiative for financial safety and privacy.
+        No trackers. No analytics. No accounts.
+        Powered by zero-knowledge cryptography.
+      </p>
+    </div>
+
+    <div>
+      <h5 class="text-white text-xs font-black tracking-widest uppercase mb-4">Learn</h5>
+      <ul class="space-y-1.5">
+        {modules.map(({ href, label }) => (
+          <li><a href={href} class="text-white/60 hover:text-white no-underline text-sm transition-colors">{label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h5 class="text-white text-xs font-black tracking-widest uppercase mb-4">Help & Resources</h5>
+      <ul class="space-y-1.5">
+        {help.map(({ href, label }) => (
+          <li><a href={href} class="text-white/60 hover:text-white no-underline text-sm transition-colors">{label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto mt-10 pt-6 border-t border-white/10 flex flex-wrap justify-between gap-2 text-xs text-white/40">
+    <span>© ShieldHer — A Zcash Education Initiative. No rights reserved — share freely.</span>
+    <span>No tracking · No cookies · No accounts · Alt+X to leave instantly</span>
+  </div>
+</footer>
