@@ -1,0 +1,376 @@
+/* ShieldHer — Global CSS
+   Tailwind base + custom component layer                  */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── BASE ─────────────────────────────────────────── */
+@layer base {
+  html {
+    font-size: 17px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white text-gray-900 antialiased min-h-screen;
+    line-height: 1.75;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-bold text-shield-deep leading-tight;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  h1 { @apply font-black; font-size: clamp(1.8rem, 4vw, 2.5rem); }
+  h2 { font-size: clamp(1.35rem, 3vw, 1.85rem); }
+  h3 { @apply text-xl; }
+  h4 { @apply text-lg; }
+
+  a { @apply text-shield-mid underline; }
+  a:hover { @apply text-shield-deep; }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-amber-sh rounded-sm;
+  }
+}
+
+/* ── COMPONENTS ───────────────────────────────────── */
+@layer components {
+
+  /* ── Escape button — in sticky header, always accessible ── */
+  .escape-btn {
+    @apply flex-shrink-0 inline-flex items-center gap-1.5
+           bg-escape text-white font-bold text-xs tracking-widest uppercase
+           px-3 py-1.5 rounded-full border-0 cursor-pointer
+           transition-all duration-150 no-underline;
+  }
+  .escape-btn:hover { background: #a93226; @apply text-white; transform: scale(1.05); }
+
+  /* ── Site header ── */
+  .site-header {
+    @apply bg-shield-deep text-white sticky top-0 z-[100] shadow-md;
+  }
+  .site-logo {
+    @apply flex items-center gap-2 text-white no-underline font-extrabold text-lg;
+    letter-spacing: -0.02em;
+  }
+  .site-logo:hover { @apply text-white; }
+  .nav-link {
+    @apply text-white/80 no-underline text-sm font-medium transition-colors duration-150;
+  }
+  .nav-link:hover, .nav-link.active { @apply text-white; }
+  .nav-cta-link {
+    @apply bg-amber-sh text-white no-underline text-sm font-bold
+           px-4 py-1.5 rounded-full transition-colors duration-150;
+  }
+  .nav-cta-link:hover { background: #b56c35; color: white; }
+
+  /* ── Hero section (home page) ── */
+  .hero-section {
+    @apply text-white text-center py-20 px-6 relative overflow-hidden;
+    background: linear-gradient(135deg, #1a4a3a 0%, #0d2b20 100%);
+  }
+
+  /* ── Path cards (home page) ── */
+  .path-card {
+    @apply bg-white rounded-2xl p-8 text-center no-underline text-gray-900
+           shadow-sm border-2 border-gray-100 flex flex-col items-center gap-4
+           transition-all duration-150;
+  }
+  .path-card:hover {
+    @apply border-shield-mid -translate-y-1 shadow-lg text-gray-900;
+    text-decoration: none;
+  }
+  .path-card:hover .path-cta-pill { @apply bg-shield-mid text-white; }
+  .path-cta-pill {
+    @apply mt-auto bg-shield-light text-shield-deep font-bold text-sm
+           px-5 py-2 rounded-full transition-colors duration-150;
+  }
+
+  /* ── Module cards (learn index) ── */
+  .module-card {
+    @apply bg-white rounded-xl border border-gray-200 p-6 no-underline text-gray-900
+           flex flex-col gap-2 transition-all duration-150 relative overflow-hidden;
+  }
+  .module-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-1 h-full bg-shield-mid transition-transform duration-150;
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+  .module-card:hover {
+    @apply border-shield-mid shadow-md -translate-y-0.5 text-gray-900;
+    text-decoration: none;
+  }
+  .module-card:hover::before { transform: scaleY(1); }
+  .module-card.is-done { @apply border-shield-mid bg-shield-xlight; }
+  .module-card.is-done::before { transform: scaleY(1); }
+
+  /* ── Buttons ── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 font-bold text-base
+           px-6 py-3 rounded-full border-2 cursor-pointer no-underline
+           transition-all duration-150 whitespace-nowrap;
+  }
+  .btn-primary   { @apply bg-shield-mid text-white border-shield-mid; }
+  .btn-primary:hover  { @apply bg-shield-deep border-shield-deep text-white; text-decoration: none; }
+  .btn-secondary { @apply bg-transparent text-shield-mid border-shield-mid; }
+  .btn-secondary:hover { @apply bg-shield-mid text-white; text-decoration: none; }
+  .btn-amber     { @apply bg-amber-sh text-white border-amber-sh; }
+  .btn-amber:hover { background: #b56c35; border-color: #b56c35; color: white; text-decoration: none; }
+  .btn-white     { @apply bg-white text-shield-deep border-white; }
+  .btn-white:hover { @apply bg-shield-light; text-decoration: none; }
+  .btn-sm { @apply text-sm px-4 py-2; }
+  .btn-lg { @apply text-lg px-8 py-4; }
+
+  /* ── Callout boxes ── */
+  .callout {
+    @apply rounded-lg p-6 border-l-4 my-6;
+  }
+  .callout-label {
+    @apply text-xs font-black tracking-widest uppercase mb-3 block;
+  }
+  .callout-story   { @apply bg-sand border-amber-sh; }
+  .callout-story   .callout-label { @apply text-amber-sh; }
+  .callout-warning { @apply bg-yellow-50 border-yellow-500; }
+  .callout-warning .callout-label { @apply text-orange-700; }
+  .callout-tip     { @apply bg-shield-xlight border-shield-mid; }
+  .callout-tip     .callout-label { @apply text-shield-mid; }
+  .callout-danger  { @apply bg-red-50 border-red-400; }
+  .callout-danger  .callout-label { @apply text-red-800; }
+  .callout p { margin: 0; line-height: 1.7; }
+  .callout p + p { margin-top: 0.75rem; }
+
+  /* ── Analogy box ── */
+  .analogy-box {
+    @apply bg-shield-xlight border-2 border-shield-light rounded-xl p-8 my-8;
+  }
+  .analogy-label {
+    @apply text-xs font-black tracking-widest uppercase text-shield-mid mb-4 block;
+  }
+
+  /* ── Steps list (numbered) ── */
+  .steps { @apply list-none p-0 m-0; counter-reset: step; }
+  .steps > li {
+    @apply grid gap-4 mb-6;
+    grid-template-columns: 2.5rem 1fr;
+    counter-increment: step;
+  }
+  .steps > li::before {
+    content: counter(step);
+    @apply bg-shield-mid text-white font-black text-sm rounded-full
+           w-10 h-10 flex items-center justify-center flex-shrink-0 mt-0.5;
+  }
+  .steps > li > strong { grid-column: 2; @apply block text-shield-deep; }
+  .steps > li > p { grid-column: 2; @apply text-gray-600 text-sm leading-relaxed m-0 mt-1; }
+
+  /* ── Checklist ── */
+  .checklist { @apply list-none p-0 m-0; }
+  .checklist > li {
+    @apply flex gap-2 mb-2 text-base items-start leading-snug;
+  }
+  .checklist > li::before {
+    content: "✓";
+    @apply text-shield-mid font-black flex-shrink-0 mt-0.5;
+  }
+  .checklist.danger > li::before {
+    content: "✗";
+    @apply text-red-700;
+  }
+
+  /* ── Stat card ── */
+  .stat-card {
+    @apply bg-white border border-gray-200 rounded-xl p-6 text-center shadow-sm;
+  }
+  .stat-num   { @apply text-4xl font-black text-shield-deep leading-none; }
+  .stat-label { @apply text-xs text-gray-500 mt-2 leading-snug; }
+
+  /* ── Code block ── */
+  .code-block {
+    @apply font-mono text-sm p-6 rounded-xl overflow-x-auto my-6;
+    background: #1a1a2e;
+    color: #a8e6cf;
+    line-height: 1.7;
+  }
+
+  /* ── Module article — typography for learn modules ── */
+  .module-article {
+    @apply text-gray-800;
+  }
+  /* Spacing between direct children */
+  .module-article > * + *  { @apply mt-6; }
+  .module-article > p + p  { margin-top: 1rem; }
+  .module-article > h2     { @apply mt-14 mb-3 text-shield-deep; font-size: clamp(1.25rem, 2.5vw, 1.65rem); }
+  .module-article > h3     { @apply mt-10 mb-2 text-shield-deep text-xl; }
+  .module-article > h2 + p,
+  .module-article > h3 + p { margin-top: 0.5rem; }
+  /* Text flow */
+  .module-article p { @apply leading-relaxed text-gray-700; }
+  .module-article strong { @apply text-gray-900 font-semibold; }
+  .module-article em { @apply italic; }
+  /* Inline code */
+  .module-article code:not([class]) {
+    @apply font-mono text-sm bg-shield-xlight text-shield-deep
+           px-1.5 py-0.5 rounded border border-shield-light;
+  }
+  /* Plain unclassed lists — add basic list styling */
+  .module-article ul:not(.checklist):not(.steps):not(.timeline) {
+    @apply list-disc pl-6 space-y-1 text-gray-700;
+  }
+  .module-article ol:not(.steps) {
+    @apply list-decimal pl-6 space-y-1 text-gray-700;
+  }
+
+  /* ── Module header ── */
+  .module-header {
+    @apply bg-shield-deep text-white py-12 px-6;
+  }
+  .module-num-tag {
+    @apply inline-block text-xs font-black tracking-widest uppercase
+           px-3 py-1 rounded-full mb-4;
+    background: rgba(255,255,255,0.15);
+    color: white;
+  }
+
+  /* ── Module nav (prev/next) ── */
+  .module-nav {
+    @apply flex flex-wrap justify-between items-center gap-4
+           px-6 py-6 bg-sand border-t border-sand-dark;
+  }
+  .module-nav-link {
+    @apply inline-flex items-center gap-1.5 font-semibold text-sm text-shield-mid
+           no-underline px-4 py-2.5 rounded-full border border-gray-200 bg-white
+           transition-all duration-150;
+  }
+  .module-nav-link:hover {
+    @apply bg-shield-deep text-white border-shield-deep;
+    text-decoration: none;
+  }
+
+  /* ── Progress bar ── */
+  .progress-bar-track { @apply bg-shield-light rounded-full h-1.5 overflow-hidden; }
+  .progress-bar-fill  {
+    @apply h-full rounded-full transition-all duration-500;
+    background: linear-gradient(90deg, #2d7a5f, #1a4a3a);
+  }
+
+  /* ── Tag / badge ── */
+  .tag {
+    @apply inline-block text-xs font-bold tracking-wide uppercase
+           bg-shield-light text-shield-deep px-2.5 py-0.5 rounded-full;
+  }
+  .tag-amber { @apply bg-amber-light text-amber-sh; }
+  .tag-red   { @apply bg-red-50 text-red-700; }
+
+  /* ── Data table ── */
+  .data-table { @apply w-full text-sm border-collapse; }
+  .data-table th {
+    @apply bg-shield-deep text-white text-left px-4 py-3 font-bold text-xs tracking-wide;
+  }
+  .data-table td  { @apply px-4 py-3 border-b border-shield-light text-gray-700; }
+  .data-table tr:last-child td  { @apply border-0; }
+  .data-table tr:nth-child(even) td { @apply bg-shield-xlight; }
+  .td-good { @apply text-shield-mid font-bold; }
+  .td-bad  { @apply text-red-700 font-bold; }
+
+  /* ── Timeline ── */
+  .timeline { @apply list-none p-0 m-0 relative; }
+  .timeline::before {
+    content: '';
+    @apply absolute top-2 bottom-2 w-0.5 bg-gray-200;
+    left: 1.1rem;
+  }
+  .timeline > li { @apply grid gap-4 mb-8 relative; grid-template-columns: 2.4rem 1fr; }
+  .timeline-dot {
+    @apply w-10 h-10 bg-shield-mid rounded-full text-white font-black
+           text-xs flex items-center justify-center flex-shrink-0 z-10;
+  }
+
+  /* ── Section label (eyebrow text above headings) ── */
+  .section-label {
+    @apply text-xs font-black tracking-widest uppercase text-shield-mid mb-1.5 block;
+  }
+
+  /* ── Page hero (non-home inner pages) ── */
+  .page-hero { @apply bg-sand border-b border-sand-dark py-12; }
+
+  /* ── Resource card ── */
+  .resource-card {
+    @apply bg-white border border-gray-200 rounded-xl p-6 flex flex-col gap-3
+           shadow-sm;
+  }
+
+  /* ── Site footer ── */
+  .site-footer {
+    background: #0d2b20;
+    @apply text-white/60 py-12 px-6 mt-auto;
+  }
+
+  /* ── Safety banner ── */
+  .safety-banner { @apply bg-shield-deep text-white text-center py-3 px-6; }
+  .safety-banner a { @apply text-emerald-300 no-underline; }
+  .safety-banner a:hover { @apply text-white underline; }
+  .safety-banner p { margin: 0; }
+
+  /* ── Emergency help block ── */
+  .help-emergency {
+    @apply bg-red-600 text-white p-8 rounded-xl mb-8;
+  }
+
+  /* ── Workshop facilitator script ── */
+  .script-block {
+    @apply text-sm p-6 my-4 rounded-r-lg leading-relaxed;
+    background: #f0f4ff;
+    border-left: 4px solid #5c7cfa;
+    color: #2d3a6b;
+    font-style: italic;
+  }
+  .script-label {
+    @apply not-italic text-xs font-black tracking-widest uppercase mb-2 block;
+    color: #5c7cfa;
+  }
+
+  /* ── Coin comparison cards ── */
+  .coin-card      { @apply rounded-xl p-6 border-2; }
+  .coin-card-bad  { @apply bg-red-50 border-red-200; }
+  .coin-card-good { @apply bg-shield-xlight border-shield-mid; }
+
+  /* ── Donation address box ── */
+  .donation-box {
+    @apply rounded-xl border-2 border-shield-mid bg-shield-xlight p-6 my-6;
+  }
+  .donation-box-label {
+    @apply text-xs font-black tracking-widest uppercase text-shield-mid mb-3 block;
+  }
+  .donation-addr-row {
+    @apply flex items-start gap-3 flex-wrap;
+  }
+  .donation-addr-text {
+    @apply font-mono text-xs break-all flex-1 text-shield-deep leading-relaxed
+           bg-white border border-shield-light rounded-lg px-3 py-2.5 block min-w-0;
+  }
+  .donation-copy-btn {
+    @apply flex-shrink-0 bg-shield-mid text-white text-xs font-bold tracking-wide
+           px-4 py-2.5 rounded-lg border-0 cursor-pointer transition-all duration-150;
+  }
+  .donation-copy-btn:hover { @apply bg-shield-deep; }
+  .donation-addr-hint {
+    @apply text-xs text-shield-mid mt-2 block;
+  }
+}
+
+/* ── PRINT ────────────────────────────────────────── */
+@media print {
+  .escape-btn, .site-header nav, .module-nav, .site-footer nav { display: none !important; }
+  body { font-size: 12pt; }
+  .module-header { background: #fff !important; color: #000 !important; }
+  a::after { content: " (" attr(href) ")"; font-size: 0.8em; }
+}
+
+/* ── RESPONSIVE NAV ───────────────────────────────── */
+@media (max-width: 767px) {
+  .mobile-nav-hidden { display: none; }
+  .mobile-nav-open   { display: flex; }
+}
