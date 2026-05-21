@@ -1,0 +1,78 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Callout    from '@components/Callout.astro';
+
+const modules = [
+  { id:'module-1', href:'/learn/1-why-privacy/',  num:'Module 1', title:'Why Financial Privacy = Safety',    desc:'Understand how financial control enables abuse — and how invisible money changes everything.',                time:'📖 5 min', badge:'Start here' },
+  { id:'module-2', href:'/learn/2-crypto-trap/',  num:'Module 2', title:'The Crypto Trap',                  desc:'Bitcoin and most cryptocurrencies are NOT private. Learn why they can make your situation more dangerous.', time:'📖 5 min', badge:'Critical'   },
+  { id:'module-3', href:'/learn/3-what-zcash/',   num:'Module 3', title:'What Zcash Does Differently',      desc:"How Zcash's mathematical shield makes your transactions invisible — explained without the jargon.",         time:'📖 5 min', badge:'Core concept'},
+  { id:'module-4', href:'/learn/4-wallet-setup/', num:'Module 4', title:'Setting Up Your Private Wallet',   desc:'Step-by-step guide to installing Zodl and creating your shielded address in 10 minutes.',                  time:'⚙️ 10 min',badge:'Hands-on'   },
+  { id:'module-5', href:'/learn/5-receiving/',     num:'Module 5', title:'Receiving Money Safely',           desc:'How to share your private address with trusted people and receive funds without leaving any trace.',       time:'📖 5 min', badge:'Practical'  },
+  { id:'module-6', href:'/learn/6-spending/',      num:'Module 6', title:'Spending Safely',                  desc:"What Zcash protects, what it doesn't, and how to stay safe at every step when you spend.",               time:'📖 5 min', badge:'Important'  },
+  { id:'module-7', href:'/learn/7-exit-plan/',    num:'Module 7', title:'Your Exit Fund Plan',              desc:'How to build a secret fund over time, combine it with a safety plan, and be ready when the moment comes.',time:'📖 10 min',badge:'The goal'  },
+];
+---
+<BaseLayout title="Learn — Survivor Guide" activePath="/learn/">
+
+  <!-- Page hero -->
+  <div class="page-hero px-6">
+    <div class="max-w-3xl mx-auto">
+      <span class="section-label">Survivor learning path</span>
+      <h1>Your private financial safety guide</h1>
+      <p class="text-gray-600 text-lg mt-2 leading-relaxed">
+        7 short modules. Plain language. No crypto experience needed.<br>
+        Work through them in order, or jump to what you need most.
+      </p>
+      <!-- Progress bar -->
+      <div class="mt-8">
+        <div class="flex justify-between items-center mb-1.5">
+          <span class="progress-label text-sm text-gray-400">0 of 7 modules complete</span>
+          <span class="text-xs text-gray-400">Saves automatically on your device</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" style="width:0%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="py-12 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+
+      <Callout type="warning" label="Before you start — stay safe">
+        <p>
+          Use <strong>Private / Incognito mode</strong> so this site doesn't appear in your browser history.
+          Press <strong>Alt + X</strong> or the red button to leave instantly at any time.
+        </p>
+      </Callout>
+
+      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mt-10">
+        {modules.map(({ id, href, num, title, desc, time, badge }) => (
+          <a href={href} class="module-card" data-module={id}>
+            <span class="text-xs font-black tracking-widest uppercase text-shield-mid">{num}</span>
+            <h3 class="text-shield-deep mt-1">{title}</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">{desc}</p>
+            <div class="mt-auto pt-3 flex items-center justify-between">
+              <span class="text-xs text-gray-400">{time} read</span>
+              <span class="module-badge tag">{badge}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <hr class="my-16 border-gray-100" />
+
+      <div class="text-center">
+        <span class="section-label">After you finish the guide</span>
+        <h3 class="text-shield-deep">Resources for advocates</h3>
+        <p class="text-gray-500 mt-2 mb-6">
+          Are you a shelter worker or counselor? We have a 30-minute workshop curriculum
+          you can teach directly to clients.
+        </p>
+        <a href="/advocates/" class="btn btn-secondary">Advocate resources →</a>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>
