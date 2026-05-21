@@ -1,0 +1,125 @@
+---
+import ModuleLayout from '@layouts/ModuleLayout.astro';
+import Callout      from '@components/Callout.astro';
+---
+<ModuleLayout
+  title="What Zcash Does Differently"
+  moduleNum={3}
+  moduleId="module-3"
+  tagline="How a mathematical breakthrough makes your transactions invisible — explained without any jargon."
+  readTime="5 minute read · No math required"
+  prev={{ href: '/learn/2-crypto-trap/', label: 'Module 2: The Crypto Trap' }}
+  next={{ href: '/learn/4-wallet-setup/', label: 'Module 4: Wallet Setup' }}
+>
+
+  <p>
+    In Module 2, you learned that most cryptocurrency creates a permanent public record.
+    Now let's understand what Zcash does differently — and why it's the right tool for financial safety.
+  </p>
+
+  <h2>The core idea: a sealed envelope with proof</h2>
+  <p>
+    Imagine two people want to prove a transaction happened — without revealing what the transaction was.
+    Normally this seems impossible. If you don't show the envelope, how does anyone know the payment is real?
+  </p>
+  <p>
+    Zcash solves this with a mathematical technique called a <strong>zero-knowledge proof</strong>.
+    Here's the plain-English version:
+  </p>
+
+  <div class="analogy-box">
+    <p class="analogy-label">The secret door analogy</p>
+    <p class="text-gray-600 text-sm leading-relaxed mb-3">
+      Imagine a cave with a circular path inside. There's a magic door in the middle that only opens
+      with a secret password. You want to prove to a friend that you know the password —
+      without telling them what it is.
+    </p>
+    <p class="text-gray-600 text-sm leading-relaxed mb-3">
+      Your friend stands at the entrance. You go into the cave and come back out the other side.
+      Your friend didn't see which way you went in — but they know you must have used the password.
+      <strong>You proved knowledge of a secret without revealing the secret itself.</strong>
+    </p>
+    <p class="text-shield-deep font-semibold text-sm">
+      Zcash does this for money. It proves "this transaction is valid and the funds exist" —
+      without revealing the amount, sender, or receiver to anyone.
+    </p>
+  </div>
+
+  <h2>What "shielded" means</h2>
+  <p>In Zcash, there are two types of addresses:</p>
+  <ul>
+    <li><strong>Transparent addresses</strong> — like Bitcoin: fully visible to everyone. These exist for compatibility but you won't use them.</li>
+    <li><strong>Shielded addresses</strong> — transaction amounts, sender, and receiver are invisible. This is what you use.</li>
+  </ul>
+  <p>
+    When you use the <strong>Zodl wallet</strong>, every transaction automatically uses a shielded address.
+    You don't have to turn on "privacy mode." There is no privacy mode.
+    <strong>Privacy is simply how it works.</strong>
+  </p>
+
+  <Callout type="tip" label="What the network sees">
+    <p>
+      When you send a shielded Zcash transaction, the network sees only: "A valid transaction occurred."
+      It does not see the amount. It does not see who sent it. It does not see who received it.
+      It cannot even confirm whether a particular address was involved.
+    </p>
+  </Callout>
+
+  <h2>Your Unified Address — your private mailbox</h2>
+  <p>
+    When you set up a Zcash wallet, you get a <strong>Unified Address</strong> —
+    a long string starting with <code>u1...</code>
+  </p>
+  <div class="code-block" aria-label="Example shielded address">
+    <span style="color:#5a7a6a">// Example shielded address (yours will be different):</span><br><br>
+    <span style="color:#a8e6cf">u1rvyea9q3k03gez0x83kf2d43h9d4xmkrtgh5v9...</span><br><br>
+    <span style="color:#5a7a6a">// Share this only with people you trust to send you money.</span><br>
+    <span style="color:#5a7a6a">// The sender cannot see your other transactions — only that they sent to this address.</span>
+  </div>
+  <p>
+    Think of it like a P.O. Box — except the mailbox itself is invisible.
+    No one can see it. No one can know how many letters are inside.
+    Only you, with your key, can open it.
+  </p>
+
+  <h2>Why Zcash specifically</h2>
+  <p>
+    Zcash was invented in 2016 by cryptographers at MIT, Johns Hopkins, and other leading universities
+    specifically to solve this problem. It is the first cryptocurrency to use zero-knowledge proofs
+    for transaction privacy. The cryptography has been independently audited and uses the same
+    mathematical foundation that major financial institutions use for secure communications.
+  </p>
+  <p>
+    In 2025–2026, Zcash's Zodl wallet defaults to shielded transactions for every user,
+    and shielded transactions reached 59% of all Zcash activity — most of the network
+    is now private by default.
+  </p>
+  <p>
+    Additionally, Zcash's development includes built-in <strong>Tor network support</strong> —
+    meaning even the act of connecting to the network can be anonymous, not just the transaction itself.
+  </p>
+
+  <h2>What Zcash does NOT protect you from</h2>
+  <ul class="checklist danger">
+    <li>If someone sees your phone screen while you're in the wallet app</li>
+    <li>If your device has stalkerware installed (covered in Module 6)</li>
+    <li>If you tell someone about your wallet and they share it</li>
+    <li>If you convert ZEC to cash through a service requiring your ID (covered in Module 6)</li>
+    <li>If your 24-word seed phrase is found by someone</li>
+  </ul>
+  <p>
+    Zcash protects the <em>transaction record</em>. You still need to protect your device,
+    your physical environment, and who you tell. Module 7 covers the complete exit plan.
+  </p>
+
+  <Callout type="story" label="What this means for Linh">
+    <p>
+      Remember Linh from Module 1? With Zcash shielded transactions: her partner could not search her wallet online.
+      There is no website that shows her balance or transaction history.
+      Even if he knew her wallet address, searching it would show nothing —
+      because shielded transactions don't appear in any public explorer.
+      <strong>Her $200 would be invisible.</strong>
+    </p>
+  </Callout>
+
+</ModuleLayout>

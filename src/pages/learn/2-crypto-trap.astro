@@ -1,0 +1,139 @@
+---
+import ModuleLayout from '@layouts/ModuleLayout.astro';
+import Callout      from '@components/Callout.astro';
+---
+<ModuleLayout
+  title="The Crypto Trap"
+  moduleNum={2}
+  moduleId="module-2"
+  tagline="Bitcoin and most cryptocurrencies are NOT private. Using them could expose you — and make your situation more dangerous."
+  readTime="5 minute read · This module is critical — please read before taking any action"
+  prev={{ href: '/learn/1-why-privacy/', label: 'Module 1: Why Privacy Matters' }}
+  next={{ href: '/learn/3-what-zcash/', label: 'Module 3: What Zcash Does' }}
+>
+
+  <Callout type="danger" label="Critical warning">
+    <p>
+      If you are already using Bitcoin or another common cryptocurrency to save secretly,
+      <strong>please read this entire module before continuing.</strong>
+      You may be more visible than you think.
+    </p>
+  </Callout>
+
+  <h2>The myth: "Crypto is anonymous"</h2>
+  <p>
+    You may have heard that cryptocurrency is anonymous or untraceable.
+    This is one of the most dangerous myths in technology.
+  </p>
+  <p>
+    <strong>Most cryptocurrency is completely public.</strong>
+    Bitcoin, Ethereum, and most other major cryptocurrencies use a system called a "blockchain" —
+    a permanent, public record of every single transaction ever made.
+    Anyone in the world can look up any wallet address and see every payment in or out,
+    going back to the very first transaction. No password. No permission. No hacking required.
+  </p>
+
+  <div class="analogy-box">
+    <p class="analogy-label">Think of it this way</p>
+    <div class="grid sm:grid-cols-[1fr_auto_1fr] gap-4 items-center">
+      <div class="bg-white rounded-xl p-5 border border-red-200 text-center">
+        <p class="text-xs font-black tracking-widest uppercase text-red-600 mb-2">Bitcoin Transaction</p>
+        <p class="text-3xl my-3" aria-hidden="true">📮</p>
+        <p class="text-sm text-gray-500">A postcard in the mail — the postman reads it, your neighbor reads it, anyone who finds it can read it, and it stays in the archive forever.</p>
+      </div>
+      <p class="text-center font-black text-gray-400 text-lg">VS</p>
+      <div class="bg-white rounded-xl p-5 border border-shield-mid text-center">
+        <p class="text-xs font-black tracking-widest uppercase text-shield-mid mb-2">Zcash Shielded Transaction</p>
+        <p class="text-3xl my-3" aria-hidden="true">✉️</p>
+        <p class="text-sm text-gray-500">A sealed envelope with no return address — only the sender and receiver can open it. No one else even knows what's inside.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>How an abuser can track Bitcoin</h2>
+  <p>Here's a realistic scenario. Imagine your partner learns your Bitcoin wallet address:</p>
+  <ol class="steps">
+    <li>
+      <strong>He searches it publicly</strong>
+      <p>He goes to any free blockchain explorer (blockchain.com, blockchair.com — no login required) and pastes your address.</p>
+    </li>
+    <li>
+      <strong>He sees your full history</strong>
+      <p>Every shelter donation. Every transfer from your mother. Every income payment from your new job. Every coffee you bought. The amounts, dates, and other wallets involved.</p>
+    </li>
+    <li>
+      <strong>He tracks you in real time</strong>
+      <p>Many blockchain explorers send notifications when an address receives money. He gets an alert every time someone sends you funds — from wherever you are.</p>
+    </li>
+    <li>
+      <strong>This is permanent</strong>
+      <p>Even if you delete the wallet app, the history never disappears. It will be publicly visible forever. There is no "delete" on a blockchain.</p>
+    </li>
+  </ol>
+
+  <Callout type="story" label="A scenario — Maria">
+    <p>
+      Maria's friend told her to use Bitcoin because "crypto is anonymous."
+      She received $500 from her mother over three months.
+      Her partner found her wallet address in a screenshot folder while going through her phone.
+    </p>
+    <p>
+      He bookmarked her wallet on a blockchain explorer and could now see every payment —
+      including her mother's exchange (which showed her mother's city),
+      and the exact moment Maria bought a bus ticket.
+      He confronted her with the exact amounts and dates.
+    </p>
+    <p>
+      <strong>The tool that was supposed to protect her had created a permanent, public financial record.</strong>
+    </p>
+  </Callout>
+
+  <h2>Comparison: Bitcoin vs Monero vs Zcash</h2>
+  <div class="overflow-x-auto rounded-xl border border-gray-200 my-6">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Bitcoin</th>
+          <th>Monero</th>
+          <th>Zcash (Shielded)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ['Transactions public by default','Yes — fully visible','No — hidden','No — hidden','bad','good','good'],
+          ['Proven by zero-knowledge math','No','No','Yes — strongest available','bad','bad','good'],
+          ['Private by default in main wallet','No','Yes','Yes (Zodl wallet)','bad','good','good'],
+          ['Post-quantum security planned','No','No','Yes (2026–2027)','bad','bad','good'],
+          ['Beginner-friendly setup','Yes','Moderate','Yes (Zodl wallet)','','','good'],
+        ].map(([f, b, m, z, bc, mc, zc]) => (
+          <tr>
+            <td>{f}</td>
+            <td class:list={[bc === 'bad' ? 'td-bad' : bc === 'good' ? 'td-good' : '']}>{b}</td>
+            <td class:list={[mc === 'bad' ? 'td-bad' : mc === 'good' ? 'td-good' : '']}>{m}</td>
+            <td class:list={[zc === 'bad' ? 'td-bad' : zc === 'good' ? 'td-good' : '']}>{z}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>What NOT to do</h2>
+  <ul class="checklist danger">
+    <li>Don't use Bitcoin, Ethereum, or any transparent chain to save secretly</li>
+    <li>Don't screenshot your wallet address and store it in your regular camera roll</li>
+    <li>Don't use a crypto exchange that sends confirmations to a shared inbox</li>
+    <li>Don't access a crypto account from a device or network your partner controls</li>
+    <li>Don't tell anyone about your plans who might reveal them</li>
+  </ul>
+
+  <h2>The good news</h2>
+  <p>
+    You now know what <em>not</em> to use. Module 3 explains what you <em>should</em> use —
+    and why Zcash's design makes it fundamentally different.
+    The technology was specifically created to make transactions
+    <strong>mathematically impossible to observe</strong> without the owner's permission.
+    Not hard to trace. Impossible.
+  </p>
+
+</ModuleLayout>
