@@ -1,0 +1,44 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ModuleNav  from '@components/ModuleNav.astro';
+
+interface Props {
+  title:     string;
+  moduleNum: number;
+  moduleId:  string;
+  tagline:   string;
+  readTime:  string;
+  prev?:     { href: string; label: string };
+  next?:     { href: string; label: string };
+}
+
+const { title, moduleNum, moduleId, tagline, readTime, prev, next } = Astro.props;
+---
+<BaseLayout title={title} activePath="/learn/">
+
+  <!-- Module header -->
+  <div class="module-header">
+    <div class="max-w-3xl mx-auto px-6">
+      <nav class="text-white/60 text-xs mb-3 flex items-center gap-1" aria-label="Breadcrumb">
+        <a href="/learn/" class="hover:text-white transition-colors no-underline">← All Modules</a>
+      </nav>
+      <div class="module-num-tag">Module {moduleNum} of 7</div>
+      <h1 class="text-white mt-2" style="font-size:clamp(1.5rem,3.5vw,2.2rem)">{title}</h1>
+      <p class="text-white/80 mt-3 text-lg leading-relaxed">{tagline}</p>
+      <p class="text-white/50 text-sm mt-3">⏱ {readTime}</p>
+    </div>
+  </div>
+
+  <!-- Module body -->
+  <section class="bg-white">
+    <article
+      class="module-article max-w-3xl mx-auto px-6 py-12"
+      data-pagefind-body
+    >
+      <slot />
+    </article>
+  </section>
+
+  <ModuleNav moduleId={moduleId} prev={prev} next={next} />
+
+</BaseLayout>

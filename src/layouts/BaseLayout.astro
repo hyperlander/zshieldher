@@ -1,0 +1,86 @@
+---
+import SiteHeader   from '@components/SiteHeader.astro';
+import SiteFooter   from '@components/SiteFooter.astro';
+import SafetyBanner from '@components/SafetyBanner.astro';
+import '@styles/global.css';
+
+interface Props {
+  title:        string;
+  description?: string;
+  activePath?:  string;
+  showBanner?:  boolean;
+}
+
+const {
+  title,
+  description = 'ShieldHer teaches women how financial privacy protects safety — and why Zcash shielded transactions are the only tool built for it.',
+  activePath  = '',
+  showBanner  = true,
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="referrer" content="no-referrer" />
+  <title>{title} — ShieldHer</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script src="/sw-register.js" defer></script>
+  <slot name="head" />
+</head>
+<body class="flex flex-col min-h-screen bg-white">
+
+  <SiteHeader activePath={activePath} />
+  {showBanner && <SafetyBanner />}
+
+  <main id="main-content" class="flex-1">
+    <slot />
+  </main>
+
+  <SiteFooter />
+
+  <script>
+    // Alt+X emergency exit
+    const ESCAPE_URL = 'https://weather.com';
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.altKey && (e.key === 'x' || e.key === 'X')) {
+        try { window.history.replaceState(null, '', ESCAPE_URL); } catch {}
+        window.location.replace(ESCAPE_URL);
+      }
+    });
+    document.getElementById('escape-btn')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      try { window.history.replaceState(null, '', ESCAPE_URL); } catch {}
+      window.location.replace(ESCAPE_URL);
+    });
+
+    // Hydrate module card completion badges from localStorage
+    const progress: Record<string, boolean> =
+      JSON.parse(localStorage.getItem('shieldher_progress') ?? '{}');
+
+    document.querySelectorAll<HTMLElement>('.module-card[data-module]').forEach((card) => {
+      const id = card.dataset.module!;
+      if (progress[id]) {
+        card.classList.add('is-done');
+        const badge = card.querySelector<HTMLElement>('.module-badge');
+        if (badge) {
+          badge.textContent = '✓ Done';
+          badge.classList.add('bg-shield-mid', 'text-white');
+        }
+      }
+    });
+
+    // Progress bar on learn index
+    const bar   = document.querySelector<HTMLElement>('.progress-bar-fill');
+    const label = document.querySelector<HTMLElement>('.progress-label');
+    if (bar) {
+      const count = Array.from({length: 7}, (_, i) => progress[`module-${i + 1}`]).filter(Boolean).length;
+      bar.style.width = `${Math.round((count / 7) * 100)}%`;
+      if (label) label.textContent = `${count} of 7 modules complete`;
+    }
+  </script>
+</body>
+</html>
