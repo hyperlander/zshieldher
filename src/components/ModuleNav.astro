@@ -1,0 +1,44 @@
+---
+interface Props {
+  moduleId: string;   // e.g. "module-3"
+  prev?: { href: string; label: string };
+  next?: { href: string; label: string };
+}
+const { moduleId, prev, next } = Astro.props;
+---
+<nav class="module-nav" aria-label="Module navigation">
+  {prev
+    ? <a href={prev.href} class="module-nav-link">← {prev.label}</a>
+    : <span />
+  }
+
+  <button
+    class="btn btn-primary text-sm px-5 py-2.5 mark-done-btn"
+    data-module={moduleId}
+  >
+    Mark as complete ✓
+  </button>
+
+  {next
+    ? <a href={next.href} class="module-nav-link">{next.label} →</a>
+    : <span />
+  }
+</nav>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.mark-done-btn');
+  if (btn) {
+    const id = btn.dataset.module!;
+    const done = () => localStorage.getItem('shieldher_progress')
+      ? JSON.parse(localStorage.getItem('shieldher_progress')!)[id] === true
+      : false;
+    if (done()) { btn.textContent = '✓ Completed'; btn.style.background = '#27ae60'; }
+    btn.addEventListener('click', () => {
+      const p = JSON.parse(localStorage.getItem('shieldher_progress') || '{}');
+      p[id] = true;
+      localStorage.setItem('shieldher_progress', JSON.stringify(p));
+      btn.textContent = '✓ Completed';
+      btn.style.background = '#27ae60';
+    });
+  }
+</script>

@@ -1,0 +1,13 @@
+---
+export type CalloutType = 'story' | 'warning' | 'tip' | 'danger';
+
+interface Props {
+  type: CalloutType;
+  label: string;
+}
+const { type, label } = Astro.props;
+---
+<div class:list={['callout', `callout-${type}`]}>
+  <div class="callout-label">{label}</div>
+  <slot />
+</div>
