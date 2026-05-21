@@ -1,0 +1,161 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Callout    from '@components/Callout.astro';
+---
+<BaseLayout title="Donors & Allies" activePath="/donors/">
+
+  <div class="page-hero px-6">
+    <div class="max-w-3xl mx-auto">
+      <span class="section-label">For friends, family, and supporters</span>
+      <h1>Send help that can't be intercepted</h1>
+      <p class="text-gray-600 text-lg mt-2 leading-relaxed">
+        A regular bank transfer can be seen by an abusive partner — and make things worse.
+        Zcash lets you send money that your loved one can actually access, safely and invisibly.
+      </p>
+    </div>
+  </div>
+
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-2xl mx-auto">
+      <span class="section-label">How to send private emergency funds</span>
+      <h2>Step-by-step guide for supporters</h2>
+      <p class="text-gray-600 mt-4 leading-relaxed">
+        You don't need to be a crypto expert. Follow these steps and your recipient will receive
+        funds that their partner cannot see or intercept.
+      </p>
+      <ol class="steps mt-8">
+        {[
+          ["Get the recipient's shielded address",
+           'Ask them to share their Zodl wallet address via Signal, in person, or another private channel. It will start with "u1..." or be a QR code. This is all you need.'],
+          ['Buy ZEC on a cryptocurrency exchange',
+           'Open an account on Coinbase, Kraken, or Gemini (all US-regulated). Complete ID verification. Buy the amount of ZEC you want to send.'],
+          ['Transfer ZEC from the exchange to your own Zodl wallet first',
+           `Download Zodl on your phone. Find your wallet's "Receive" address and copy it. In your exchange account, "Withdraw" ZEC to that address. Wait 10–20 minutes for it to arrive.`],
+          ["Send from your Zodl wallet to the recipient's address",
+           'Open Zodl, tap "Send," paste their address (or scan their QR code), enter the amount. Tap send. The transaction is now private — amount, sender, and receiver are shielded.'],
+          ['Confirm they received it',
+           "Ask via Signal or in person if the balance updated in their app. If yes, you're done. The funds are theirs, privately and permanently."],
+        ].map(([title, body]) => (
+          <li>
+            <strong>{title}</strong>
+            <p>{body}</p>
+          </li>
+        ))}
+      </ol>
+
+      <Callout type="warning" label="Important — Why step 3 matters">
+        <p>
+          If you send ZEC directly from the exchange (without going through your own Zodl wallet first),
+          the exchange uses a transparent address — which creates a visible record.
+          <strong>Always transfer to your own Zodl wallet first, then send from there.</strong>
+          This ensures the transaction arrives shielded.
+        </p>
+      </Callout>
+    </div>
+  </section>
+
+  <section class="py-16 px-6 bg-shield-xlight">
+    <div class="max-w-2xl mx-auto">
+      <span class="section-label">Common questions from supporters</span>
+      <h2>What you need to know</h2>
+      <div class="space-y-8 mt-8">
+        {[
+          ['How much should I send?',
+           'Start small — $20–$50 to confirm the system works. Then send regularly (weekly or monthly) rather than large lump sums. Regular small amounts build a meaningful fund over time.'],
+          ['Can I send anonymously?',
+           'The transaction itself is private. However, you will need to buy ZEC from an exchange using your ID. The exchange knows you bought ZEC — but they do not know where you sent it.'],
+          ["What if they don't have the app yet?",
+           'Share Module 4 of this guide with them — it walks through wallet setup in 10 minutes. They can read it in private browsing mode.'],
+          ['Is ZEC a reliable store of value?',
+           "ZEC's price fluctuates like other cryptocurrencies. For emergency funds, keep the amount practical — enough to cover immediate escape costs, not a long-term investment."],
+          ['Can I donate to a shelter organization instead?',
+           'Yes. Some DV shelters now accept Zcash donations. See Get Help Now for a list of verified partner organizations.'],
+        ].map(([q, a]) => (
+          <div>
+            <h3 class="text-shield-deep text-base">{q}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mt-1">{a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6 bg-sand">
+    <div class="max-w-2xl mx-auto">
+      <span class="section-label">For larger supporters</span>
+      <h2>Fund a shelter's emergency ZEC pool</h2>
+      <p class="text-gray-600 mt-4 leading-relaxed">
+        Rather than sending to an individual, you can donate to a DV organization's ZEC wallet.
+        They distribute emergency grants to survivors who need a financial starting point.
+      </p>
+      <ul class="checklist my-6">
+        <li>Can be sent privately (no public record of donor identity)</li>
+        <li>Arrives within minutes of sending</li>
+        <li>Can be used to fund multiple survivors over time</li>
+        <li>May be tax-deductible depending on your jurisdiction</li>
+        <li>Distributed by shelter staff who know each client's specific situation</li>
+      </ul>
+      <a href="/get-help/" class="btn btn-primary">Find partner shelters that accept ZEC →</a>
+    </div>
+  </section>
+
+  <!-- ── DONATE TO SHIELDHER ── -->
+  <section class="py-16 px-6 bg-white border-t border-gray-100" id="donate">
+    <div class="max-w-2xl mx-auto">
+      <span class="section-label">Support this project</span>
+      <h2>Donate to ShieldHer</h2>
+      <p class="text-gray-600 mt-4 leading-relaxed">
+        ShieldHer is free, open-source, and runs without ads, trackers, or user accounts.
+        If this work matters to you, donations in Zcash keep it running and independent.
+        All donations arrive fully shielded — we cannot see who sent them, and neither can anyone else.
+      </p>
+
+      <div class="donation-box mt-8">
+        <span class="donation-box-label">Shielded donation address — Zcash Unified Address</span>
+        <div class="donation-addr-row">
+          <code id="donation-addr" class="donation-addr-text">u1657p90kyutkvqzlwsjys6qlg7jpx8ulkjs2h8r3cgyvl2x0vze0xtpyg5c7gv068j6nuh2vj7vtch3xurey669wev0ptmkd747cuk07jk2e67sa0n0d56emasdkxn95362mmkd74y5ddy8u6aet5c8gvm7xnfmy0qkch0tjpcgtkc6rd</code>
+          <button id="copy-addr-btn" class="donation-copy-btn" type="button" aria-label="Copy Zcash address to clipboard">
+            Copy
+          </button>
+        </div>
+        <span class="donation-addr-hint">Open Zodl → Send → paste this address</span>
+      </div>
+
+      <ul class="checklist mt-6 text-sm text-gray-600">
+        <li>No public record — amount and sender are shielded end-to-end</li>
+        <li>No account, email, or receipt needed</li>
+        <li>Works from any wallet that supports Zcash Unified Addresses</li>
+        <li>Minimum practical amount is any fraction of ZEC — no minimum</li>
+      </ul>
+
+      <Callout type="warning" label="Send from a shielded wallet, not an exchange">
+        <p>
+          Sending directly from an exchange (Coinbase, Kraken, etc.) uses a transparent address
+          and creates a visible on-chain record linking you to the donation.
+          <strong>Use Zodl or another shielded wallet</strong> so your support stays private.
+          Follow steps 2–4 above if you need to move ZEC off an exchange first.
+        </p>
+      </Callout>
+    </div>
+  </section>
+
+  <script>
+    const btn  = document.getElementById('copy-addr-btn') as HTMLButtonElement | null;
+    const addr = document.getElementById('donation-addr');
+    btn?.addEventListener('click', async () => {
+      const text = addr?.textContent?.trim() ?? '';
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = 'Copied!';
+        setTimeout(() => { if (btn) btn.textContent = 'Copy'; }, 2000);
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(addr!);
+        const sel = window.getSelection();
+        sel?.removeAllRanges();
+        sel?.addRange(range);
+      }
+    });
+  </script>
+
+</BaseLayout>
