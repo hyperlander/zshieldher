@@ -1,0 +1,140 @@
+---
+import ModuleLayout from '@layouts/ModuleLayout.astro';
+import Callout      from '@components/Callout.astro';
+---
+<ModuleLayout
+  title="Setting Up Your Private Wallet"
+  moduleNum={4}
+  moduleId="module-4"
+  tagline="A step-by-step guide to installing the Zodl wallet and creating your private shielded address in about 10 minutes."
+  readTime="10 minute guided setup · Have a pen and paper ready"
+  prev={{ href: '/learn/3-what-zcash/', label: 'Module 3: What Zcash Does' }}
+  next={{ href: '/learn/5-receiving/', label: 'Module 5: Receiving Safely' }}
+>
+
+  <Callout type="warning" label="Before you begin — checklist">
+    <p>Please confirm these before starting:</p>
+    <ul class="checklist mt-3">
+      <li>You are using a <strong>private device</strong> — not one shared with your partner</li>
+      <li>You are connected to <strong>mobile data</strong>, not your home WiFi</li>
+      <li>You are using <strong>private/incognito browsing</strong> for this guide</li>
+      <li>You have <strong>pen and paper</strong> ready for your seed phrase</li>
+      <li>You have <strong>10–15 minutes alone</strong></li>
+    </ul>
+  </Callout>
+
+  <h2>Step 1 — Download Zodl wallet</h2>
+  <p>
+    Zodl (formerly called Zashi) is the official Zcash wallet. It is free, and it automatically
+    uses shielded transactions for everything.
+  </p>
+  <ol class="steps">
+    <li>
+      <strong>Open your phone's app store</strong>
+      <p>Go to the App Store (iPhone) or Google Play Store (Android).</p>
+    </li>
+    <li>
+      <strong>Search for "Zodl" or "Zashi Zcash"</strong>
+      <p>Look for the official app from "Zcash Open Development Lab" (ZODL). The icon shows a shielded Z shape.</p>
+    </li>
+    <li>
+      <strong>Tap Install or Get</strong>
+      <p>The app is free and does not require an account or email address.</p>
+    </li>
+  </ol>
+
+  <Callout type="tip" label="Safety tip — App store history">
+    <p>
+      If your partner can see your App Store download history (some family accounts share this),
+      consider creating a separate Apple ID or Google account on the device first,
+      or using a device your partner does not have access to.
+    </p>
+  </Callout>
+
+  <h2>Step 2 — Create a new wallet</h2>
+  <ol class="steps">
+    <li>
+      <strong>Open Zodl and tap "Create new wallet"</strong>
+      <p>Do NOT tap "Restore wallet" unless you already have a seed phrase from a previous wallet.</p>
+    </li>
+    <li>
+      <strong>Read the introduction screens</strong>
+      <p>The app will explain shielded transactions. You can tap through — you already know this from Modules 1–3.</p>
+    </li>
+    <li>
+      <strong>You will see your seed phrase — 24 words</strong>
+      <p>This is the most important step. These 24 words are the only key to your wallet. Anyone who has them can access your funds.</p>
+    </li>
+  </ol>
+
+  <Callout type="danger" label="CRITICAL — Seed phrase rules">
+    <p><strong>Write your 24 words on paper — right now, before continuing.</strong></p>
+    <ul class="checklist danger mt-3">
+      <li>Do NOT screenshot it — photos can be found in photo libraries</li>
+      <li>Do NOT type it into any app, note, or cloud service</li>
+      <li>Do NOT email it to yourself or store it digitally</li>
+      <li>Do NOT store the paper where your partner might find it</li>
+    </ul>
+    <p class="mt-3">
+      <strong>Good hiding places:</strong> At a trusted friend's house · Inside a book at a library ·
+      In a safety deposit box your partner doesn't know about · Memorized (if you're able)
+    </p>
+  </Callout>
+
+  <h2>Step 3 — Confirm your seed phrase</h2>
+  <ol class="steps">
+    <li>
+      <strong>The app asks you to confirm several of the 24 words</strong>
+      <p>This confirms you wrote them down. Select the correct words from the options shown.</p>
+    </li>
+    <li>
+      <strong>Your wallet is created</strong>
+      <p>You will see a main balance screen showing $0.00 ZEC. This is normal. Your wallet is ready to receive funds.</p>
+    </li>
+  </ol>
+
+  <h2>Step 4 — Find your shielded address</h2>
+  <ol class="steps">
+    <li>
+      <strong>Tap "Receive" in the app</strong>
+      <p>This shows your Unified Address — the long string that starts with "u1..."</p>
+    </li>
+    <li>
+      <strong>This is your private mailbox</strong>
+      <p>Share this address only with people you trust to send you money. They cannot see your other transactions.</p>
+    </li>
+    <li>
+      <strong>Share it as a QR code or copy the text</strong>
+      <p>Use whichever is easiest for the person sending. Both are equally private.</p>
+    </li>
+  </ol>
+
+  <h2>Step 5 — Test with a small amount</h2>
+  <p>
+    Before building a significant fund, test that everything works by asking a trusted person
+    to send you a very small amount. When it arrives, you'll see the balance update.
+    The transaction will not appear in any public record.
+  </p>
+  <p>
+    If you need your first small amount of ZEC,
+    see <a href="/get-help/">Get Help Now</a> — we have partner organizations that can
+    provide emergency ZEC to survivors.
+  </p>
+
+  <h2>Setting up app security</h2>
+  <ul class="checklist">
+    <li>Enable Face ID / fingerprint unlock for the Zodl app (not PIN — PINs can be watched)</li>
+    <li>Turn off notification previews — so lock-screen alerts don't show transaction amounts</li>
+    <li>Consider renaming the app folder to something neutral on your home screen</li>
+    <li>Delete this guide page from your browser history when you're done reading</li>
+  </ul>
+
+  <Callout type="tip" label="How to delete browser history">
+    <p>
+      <strong>iPhone Safari:</strong> Settings → Safari → Clear History and Website Data<br>
+      <strong>Android Chrome:</strong> Three dots → History → Clear browsing data<br>
+      <strong>Better option:</strong> Use private/incognito mode from the start — no history to delete.
+    </p>
+  </Callout>
+
+</ModuleLayout>

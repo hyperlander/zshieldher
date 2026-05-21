@@ -1,0 +1,96 @@
+---
+import ModuleLayout from '@layouts/ModuleLayout.astro';
+import Callout      from '@components/Callout.astro';
+---
+<ModuleLayout
+  title="Receiving Money Safely"
+  moduleNum={5}
+  moduleId="module-5"
+  tagline="How to share your private address with trusted people, and what the person sending to you needs to know."
+  readTime="5 minute read"
+  prev={{ href: '/learn/4-wallet-setup/', label: 'Module 4: Wallet Setup' }}
+  next={{ href: '/learn/6-spending/', label: 'Module 6: Spending Safely' }}
+>
+
+  <h2>How to share your address</h2>
+  <p>Your Unified Address (the "u1..." string from Module 4) is how people send you private ZEC:</p>
+  <ul class="checklist">
+    <li><strong>Show the QR code</strong> in person — the sender scans it with their wallet app</li>
+    <li><strong>Send the address as a message</strong> — only on encrypted apps like Signal</li>
+    <li><strong>Read it aloud over a phone call</strong> — faster than typing 78 characters</li>
+    <li><strong>Email it</strong> — only if the email account is private and inaccessible to your partner</li>
+  </ul>
+
+  <Callout type="warning" label="Choose your communication channel carefully">
+    <p>
+      The wallet address itself is safe to share — it reveals nothing about past transactions.
+      But the <em>act of sharing it</em> must be private.
+      Don't send it via SMS on a shared phone plan.
+      Don't share it in a social media DM your partner monitors.
+      <strong>Use Signal if possible</strong> — it's encrypted end-to-end and can auto-delete messages.
+    </p>
+  </Callout>
+
+  <h2>What your sender needs to know</h2>
+  <ol class="steps">
+    <li>
+      <strong>The Zodl wallet (or any Zcash wallet supporting shielded sending)</strong>
+      <p>If they use a different Zcash wallet, make sure it supports "shielded" or "z-address" sending. Most modern Zcash wallets do.</p>
+    </li>
+    <li>
+      <strong>Some ZEC to send</strong>
+      <p>They can buy ZEC on Coinbase, Kraken, or Gemini and transfer it to their Zodl wallet first. See the <a href="/donors/">Donors page</a> for a step-by-step guide written for your trusted supporter.</p>
+    </li>
+    <li>
+      <strong>Your Unified Address</strong>
+      <p>That's it. They enter it in the "Send" screen, type the amount, and send. Private from that moment forward.</p>
+    </li>
+  </ol>
+
+  <h2>What happens when you receive ZEC</h2>
+  <ul class="checklist">
+    <li>The ZEC arrives in your Zodl wallet (usually within 1–2 minutes)</li>
+    <li>Your balance updates on-screen — visible only inside the app</li>
+    <li>No public record exists of the transaction</li>
+    <li>The sender cannot see your total balance or other transactions</li>
+    <li>No notification appears on your phone's lock screen (if you turned off previews in Module 4)</li>
+  </ul>
+
+  <h2>Receiving from organizations</h2>
+  <p>
+    Some DV shelters and NGOs have ZEC funds they can send to survivors in need.
+    See <a href="/get-help/">Get Help Now</a> for a directory of verified organizations
+    that can send emergency ZEC.
+  </p>
+  <p>
+    When receiving from an organization: they will ask for your Unified Address.
+    Provide it over Signal, in person, or via a private email.
+    The transaction is private and will not show the organization's name in any record visible to others.
+  </p>
+
+  <h2>Keeping your address safe</h2>
+  <ul class="checklist">
+    <li>You can share your address with multiple trusted people — each sender's transaction is separate</li>
+    <li>Your address does not expire unless you specifically generate a new one</li>
+    <li>If you believe your address has been compromised, generate a new one — your existing funds remain safe</li>
+    <li>You can generate "one-time addresses" for extra privacy when receiving from people you don't fully trust</li>
+  </ul>
+
+  <Callout type="tip" label="You can have multiple addresses">
+    <p>
+      Zodl can generate additional addresses for the same wallet.
+      You could give one address to your mother, a different one to a shelter, and a third to a trusted friend —
+      so that if any one of them is ever seen, the others remain private.
+      Each address leads to the same wallet and the same balance.
+    </p>
+  </Callout>
+
+  <h2>Building your fund gradually</h2>
+  <p>
+    There's no need to receive large amounts at once. Small, regular amounts are safer —
+    less conspicuous if anyone notices data on your device. Many survivors receive $20–$50
+    per week from trusted supporters over several months, building a meaningful fund
+    before taking action.
+  </p>
+
+</ModuleLayout>

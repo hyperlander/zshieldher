@@ -1,0 +1,128 @@
+---
+import ModuleLayout from '@layouts/ModuleLayout.astro';
+import Callout      from '@components/Callout.astro';
+import StatCard     from '@components/StatCard.astro';
+---
+<ModuleLayout
+  title="Your Exit Fund Plan"
+  moduleNum={7}
+  moduleId="module-7"
+  tagline="How to build a secret fund gradually, integrate it with a full safety plan, and be financially ready when the moment comes."
+  readTime="10 minute read · The final module"
+  prev={{ href: '/learn/6-spending/', label: 'Module 6: Spending Safely' }}
+  next={{ href: '/get-help/', label: 'Get Help Now' }}
+>
+
+  <Callout type="tip" label="You've made it to the final module">
+    <p>
+      If you've worked through all 7 modules, you now understand more about financial privacy
+      and Zcash than most people in the world. This final module brings it all together
+      into a practical plan you can start today.
+    </p>
+  </Callout>
+
+  <h2>What you need to leave safely</h2>
+  <p>
+    Leaving an abusive relationship takes preparation. Most survivors who leave safely
+    — and stay gone — have planned for months in advance. A financial foundation is central to that plan.
+  </p>
+
+  <div class="overflow-x-auto rounded-xl border border-gray-200 my-6">
+    <table class="data-table">
+      <thead><tr><th>Expense</th><th>Typical Range</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>First + last month's rent (deposit)</td><td>$1,500–$4,000</td><td>Varies widely by location</td></tr>
+        <tr><td>Moving costs</td><td>$200–$2,000</td><td>Less if you leave with little</td></tr>
+        <tr><td>New phone + plan (different number)</td><td>$200–$500</td><td>Critical if stalkerware suspected</td></tr>
+        <tr><td>2 weeks food + household supplies</td><td>$300–$600</td><td></td></tr>
+        <tr><td>Emergency childcare</td><td>$500–$1,500</td><td>If applicable</td></tr>
+        <tr><td>Legal consultation</td><td>$0–$500</td><td>Many DV legal services are free</td></tr>
+        <tr><td><strong>Target total</strong></td><td><strong>$2,500–$8,000</strong></td><td>Start with $500 as first milestone</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>The gradual fund-building framework</h2>
+  <p>
+    You don't need the full amount before you start. You need a starting point —
+    and a steady, invisible stream of additions.
+  </p>
+
+  <div class="bg-shield-xlight rounded-xl p-8 my-8">
+    <p class="section-label">A sample 6-month plan</p>
+    <ul class="timeline">
+      {[
+        { dot:'W1', title:'Week 1: Foundation',        body:"Wallet set up on a private device. Seed phrase stored safely at a trusted friend's home. Emergency ZEC received to confirm the wallet works ($5–$20)." },
+        { dot:'M1', title:'Month 1: First $100',       body:'Trusted contact sends $20–$30 per week over 4 weeks. Milestone: $100 in your private wallet — invisible, safe, yours.' },
+        { dot:'M3', title:'Month 3: $500 milestone',   body:'First critical milestone. $500 is enough for transport and one week of emergency accommodation in most places. Safety plan activated.' },
+        { dot:'M4', title:'Months 4–5: Connect with a shelter', body:"You don't need to wait until financially ready to talk to a professional. DV organizations can help you plan while you continue saving." },
+        { dot:'M6', title:'Month 6: $2,000+ and exit-ready', body:'With a shelter connection, legal plan, trusted support network, and a private financial fund — you are ready. The timing is your decision.' },
+      ].map(({ dot, title, body }) => (
+        <li>
+          <div class="timeline-dot">{dot}</div>
+          <div>
+            <strong class="text-shield-deep block mb-1">{title}</strong>
+            <p class="text-sm text-gray-500 m-0">{body}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <h2>The complete safety plan — beyond finances</h2>
+  <p>Your Zcash fund is one tool in a complete safety plan. Financial independence is necessary but not sufficient:</p>
+  <ul class="checklist">
+    <li><strong>A destination</strong> — a shelter, a trusted person's home, or a rental in another area</li>
+    <li><strong>A communication plan</strong> — a new phone number, Signal, a safe email address</li>
+    <li><strong>Important documents</strong> — passport, birth certificates, medical records (keep copies off-site)</li>
+    <li><strong>A trusted contact network</strong> — at least 2–3 people who know the plan and can help</li>
+    <li><strong>A legal plan</strong> — understand your rights, custody arrangements, protective orders</li>
+    <li><strong>A financial emergency fund</strong> — your Zcash shielded wallet</li>
+  </ul>
+
+  <Callout type="story" label="How Linh's story ended">
+    <p>
+      Seven months after the worst night of her life, Linh had $1,800 in her shielded Zcash wallet —
+      built $25 at a time by her sister, week after week.
+      Her partner had no idea it existed.
+    </p>
+    <p>
+      On a Tuesday morning while he was at work, she took her daughter, two bags,
+      and her phone (a borrowed one with no stalkerware) — and left.
+    </p>
+    <p>
+      She had enough for the first month's rent. She had a job lined up. She had a lawyer's number in her Signal contacts.
+      <strong>She had options. And options meant she never had to go back.</strong>
+    </p>
+  </Callout>
+
+  <h2>If you need emergency help right now</h2>
+  <p>
+    Your financial plan matters — but if you are in danger today, please reach out immediately.
+    Financial preparation is for people who have time to prepare. If you don't have that time,
+    there are people ready to help you right now.
+  </p>
+  <div class="flex flex-wrap gap-4 mt-4">
+    <a href="/get-help/" class="btn btn-primary">Emergency resources →</a>
+    <a href="/advocates/" class="btn btn-secondary">Find an advocate →</a>
+  </div>
+
+  <hr class="my-12 border-gray-100" />
+
+  <h2>You've completed the guide</h2>
+  <p>You now know:</p>
+  <ul class="checklist">
+    <li>Why financial privacy is a safety tool, not a luxury</li>
+    <li>Why transparent crypto (Bitcoin) is dangerous for survivors</li>
+    <li>How Zcash's mathematical shield makes transactions invisible</li>
+    <li>How to set up a private, shielded wallet in 10 minutes</li>
+    <li>How to receive money safely from trusted people</li>
+    <li>How to spend or convert funds without exposing yourself</li>
+    <li>How to build a complete exit plan over time</li>
+  </ul>
+  <div class="flex flex-wrap gap-4 mt-6">
+    <a href="/download/" class="btn btn-primary">Download all guides offline →</a>
+    <a href="/learn/" class="btn btn-secondary">Review all modules</a>
+  </div>
+
+</ModuleLayout>

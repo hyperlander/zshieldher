@@ -1,0 +1,113 @@
+---
+import ModuleLayout from '@layouts/ModuleLayout.astro';
+import Callout      from '@components/Callout.astro';
+---
+<ModuleLayout
+  title="Spending Safely"
+  moduleNum={6}
+  moduleId="module-6"
+  tagline="What Zcash protects, what it doesn't, and how to think through the full chain when you need to use your funds."
+  readTime="5 minute read"
+  prev={{ href: '/learn/5-receiving/', label: 'Module 5: Receiving Safely' }}
+  next={{ href: '/learn/7-exit-plan/', label: 'Module 7: Your Exit Plan' }}
+>
+
+  <p>
+    Zcash protects your transaction record perfectly. But spending money in the real world
+    involves more than transactions — it involves your physical presence, your device,
+    and sometimes converting to a different form of money.
+  </p>
+
+  <h2>Spending ZEC directly</h2>
+  <p>
+    When you pay directly in ZEC (from your Zodl wallet, to a shielded merchant address),
+    the transaction is completely private — no name, no bank, no record.
+  </p>
+  <ul class="checklist">
+    <li>Online services accepting ZEC (VPN services, web hosting, some retailers)</li>
+    <li>Direct peer-to-peer payments to individuals who also use Zcash</li>
+    <li>Some travel services and accommodation platforms</li>
+    <li>NGO/charity donations where the organization accepts ZEC</li>
+  </ul>
+
+  <h2>Converting ZEC to cash</h2>
+  <p>Most everyday spending requires cash or a regular card. To convert ZEC to cash, you use a cryptocurrency exchange.</p>
+
+  <Callout type="warning" label="The identity trade-off">
+    <p>
+      Most large exchanges (Coinbase, Kraken, Binance) require you to verify your identity
+      (passport, ID, selfie). This is legally required in most countries.
+      This is acceptable if:
+    </p>
+    <ul class="mt-3" style="padding-left:1.5rem;">
+      <li>The exchange account is in your name — fine if your partner doesn't know about it</li>
+      <li>The bank account receiving the cash is private (your partner doesn't monitor it)</li>
+      <li>You opened the account from a private device and private email</li>
+    </ul>
+  </Callout>
+
+  <h3>Safer conversion options</h3>
+  <ul class="checklist">
+    <li><strong>Bitcoin ATMs with Zcash support</strong> — some dispense cash with minimal ID. Find local ones at coinatmradar.com</li>
+    <li><strong>Peer-to-peer exchange</strong> — trade ZEC directly with a trusted individual for cash in person</li>
+    <li><strong>Prepaid debit cards</strong> — some services allow loading a prepaid card with crypto without a bank account</li>
+    <li><strong>A trusted intermediary</strong> — a friend converts ZEC to cash on your behalf and hands it to you physically</li>
+  </ul>
+
+  <h2>Checking for stalkerware on your device</h2>
+  <p>Stalkerware secretly monitors your phone — recording messages, location, and keystrokes.</p>
+
+  <h3>Signs your phone may have stalkerware:</h3>
+  <ul class="checklist danger">
+    <li>Battery drains faster than usual without explanation</li>
+    <li>Phone is warm even when not in use</li>
+    <li>Partner knows information you only accessed on your phone</li>
+    <li>Partner gave you the phone or insisted on "setting it up" for you</li>
+    <li>Unfamiliar apps in your app list</li>
+  </ul>
+
+  <h3>What to do:</h3>
+  <ul class="checklist">
+    <li>Use a different device (borrowed, shelter device, library computer) for financial activities</li>
+    <li>Contact the <a href="https://www.techsafety.org" target="_blank" rel="noopener noreferrer">Safety Net Project (techsafety.org)</a> — they help survivors with technology safety</li>
+    <li>A factory reset removes stalkerware — but only do this if your partner won't notice</li>
+    <li>Do NOT install stalkerware detection apps on a compromised device — they can alert the abuser</li>
+  </ul>
+
+  <h2>The "full chain" checklist</h2>
+  <p>Before spending or withdrawing, trace the full chain and ask at each step: "Is this visible to someone I don't want seeing it?"</p>
+
+  <div class="overflow-x-auto rounded-xl border border-gray-200 my-6">
+    <table class="data-table">
+      <thead>
+        <tr><th>Step</th><th>What could reveal it</th><th>How to protect it</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Receiving ZEC into shielded wallet</td><td>Nothing — transaction is private</td><td class="td-good">✓ Fully protected by Zcash</td></tr>
+        <tr><td>Opening the wallet app</td><td>Stalkerware, screen recording</td><td>Use a clean, private device</td></tr>
+        <tr><td>Converting to cash via exchange</td><td>Exchange knows your ID; bank transfer visible</td><td>Use private account; trusted intermediary</td></tr>
+        <tr><td>Withdrawing cash from ATM</td><td>ATM camera; bank statement</td><td>Use Bitcoin ATM with ZEC, or physical cash handoff</td></tr>
+        <tr><td>Spending cash</td><td>Physical receipts; merchant cameras</td><td>Most private option once you have cash</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>What NOT to do</h2>
+  <ul class="checklist danger">
+    <li>Don't send ZEC to a transparent (non-shielded) address — it creates a visible record</li>
+    <li>Don't use an exchange that sends confirmation emails to a shared inbox</li>
+    <li>Don't spend large amounts at once — gradual withdrawals are less conspicuous</li>
+    <li>Don't keep ZEC on an exchange long-term — keep it in your private Zodl wallet</li>
+    <li>Don't tell anyone how much you have saved until you are safe</li>
+  </ul>
+
+  <Callout type="tip" label="The golden rule">
+    <p>
+      Zcash protects the money while it's in the shielded pool.
+      Your job is to protect <strong>how you access it</strong>: the device, the account,
+      the physical moment of withdrawal.
+      Think of Zcash as a perfectly secure vault — but you still need to be careful about who sees you open it.
+    </p>
+  </Callout>
+
+</ModuleLayout>
