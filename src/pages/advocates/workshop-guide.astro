@@ -1,0 +1,199 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Callout    from '@components/Callout.astro';
+
+const timeline = [
+  { time:'0–5 min',   section:"Opening: Why we're talking about this today",  format:'Facilitator talk' },
+  { time:'5–10 min',  section:'The problem with most crypto (Bitcoin warning)', format:'Facilitator talk + discussion' },
+  { time:'10–15 min', section:'What Zcash does differently',                   format:'Analogy + Q&A' },
+  { time:'15–25 min', section:'Live demo: installing wallet + receiving funds', format:"Hands-on (participant's phone)" },
+  { time:'25–30 min', section:'Wrap-up: next steps + resources',               format:'Facilitator + handout' },
+];
+
+const faq = [
+  { q: '"Is this legal?"',
+    a: 'Yes. Zcash is a legal cryptocurrency in most countries. Using privacy-protecting financial tools is legal everywhere cash is legal. Financial privacy is a human right recognized internationally.' },
+  { q: '"What if he finds my phone with the app on it?"',
+    a: "The app can be protected with Face ID/fingerprint so he can't open it. Most importantly: the money is tied to your seed phrase (24 words), not the phone. If the phone is found and destroyed, your money is still safe — as long as your seed phrase is stored elsewhere." },
+  { q: '"How do I turn it into cash?"',
+    a: 'You can use a cryptocurrency ATM (some accept Zcash and dispense cash), ask a trusted person to receive ZEC and hand you cash in person, or create a separate private account on a crypto exchange. Module 6 of the online guide covers this in detail.' },
+  { q: '"What if the value of ZEC goes down?"',
+    a: "ZEC's price does fluctuate. For emergency savings, keep the fund modest — enough for immediate needs. Some partner organizations can hold funds in more stable forms on clients' behalf if needed." },
+  { q: '"Can I lose the money?"',
+    a: 'Only if you lose your 24-word seed phrase AND your phone at the same time. As long as you have the seed phrase written safely, you can always recover your wallet on any new device.' },
+];
+---
+<BaseLayout title="30-Minute Workshop Guide" activePath="/advocates/">
+
+  <div class="module-header">
+    <div class="max-w-3xl mx-auto px-6">
+      <nav class="text-white/60 text-xs mb-3">
+        <a href="/advocates/" class="hover:text-white no-underline transition-colors">← Advocate Resources</a>
+      </nav>
+      <div class="module-num-tag">Facilitator Guide</div>
+      <h1 class="text-white mt-0" style="font-size:clamp(1.5rem,3.5vw,2.2rem)">
+        30-Minute Workshop: Financial Privacy with Zcash
+      </h1>
+      <p class="text-white/80 text-lg mt-2 leading-relaxed">
+        A complete script for teaching survivors about invisible money.
+        No crypto knowledge required to facilitate this session.
+      </p>
+      <p class="text-white/50 text-sm mt-4">📋 Print this guide before your session · Works with 1 or 20 participants</p>
+    </div>
+  </div>
+
+  <section class="bg-white">
+  <article class="module-article max-w-3xl mx-auto px-6 py-12" data-pagefind-body>
+
+    <Callout type="warning" label="Before the session">
+      <p>
+        Remind participants of the emergency exit option at the start.
+        Ensure all phones used for the demo are on mobile data.
+        Have the handout printed and ready (download from the <a href="/download/">Download page</a>).
+      </p>
+    </Callout>
+
+    <h2>Session overview</h2>
+    <div class="overflow-x-auto rounded-xl border border-gray-200 my-6">
+      <table class="data-table">
+        <thead><tr><th>Time</th><th>Section</th><th>Format</th></tr></thead>
+        <tbody>
+          {timeline.map(({ time, section, format }) => (
+            <tr><td>{time}</td><td>{section}</td><td>{format}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="my-10 border-gray-100" />
+
+    <!-- SECTION 1 -->
+    <h2>Section 1 (0–5 min): Opening</h2>
+    <div class="script-block">
+      <p class="script-label">Facilitator script</p>
+      "Today we're going to talk about something very practical: how to keep money private from someone who monitors your finances.<br><br>
+      Financial control is one of the most powerful tools of abuse. When we talk about leaving safely, we talk about safety plans and housing. But money is almost always what makes or breaks an exit attempt.<br><br>
+      Today I want to show you a tool that makes it possible to save money that is genuinely invisible. Not hard to find — mathematically impossible to find without your permission.<br><br>
+      This is not about anything illegal. This is about the same kind of privacy you have when you use cash. We're just making that possible in digital form."
+    </div>
+
+    <hr class="my-10 border-gray-100" />
+
+    <!-- SECTION 2 -->
+    <h2>Section 2 (5–10 min): The Crypto Warning</h2>
+    <div class="script-block">
+      <p class="script-label">Facilitator script</p>
+      "First, something important: if you've heard that cryptocurrency is anonymous, that's often not true. Bitcoin is actually one of the most trackable forms of money that exists.<br><br>
+      Here's why. Bitcoin uses something called a blockchain — a public spreadsheet that records every transaction, forever. If someone knows your wallet address, they can go to a free website and see every dollar that ever went in or out. No password, no permission, no subpoena.<br><br>
+      So before anyone tells you to 'use crypto' to save secretly: ask them which crypto. Most of them are worse than a bank account for privacy."
+    </div>
+    <p><strong>Key point to write or say clearly:</strong> <em>"Bitcoin = Public postcard. Zcash shielded = Sealed envelope."</em></p>
+
+    <hr class="my-10 border-gray-100" />
+
+    <!-- SECTION 3 -->
+    <h2>Section 3 (10–15 min): What Zcash Does</h2>
+    <div class="script-block">
+      <p class="script-label">Facilitator script</p>
+      "Zcash was invented by mathematicians at MIT and Johns Hopkins specifically to solve this problem. They created a way to prove a transaction is real — without revealing who sent it, who received it, or how much.<br><br>
+      The app we'll use is called Zodl. When you send or receive money through Zodl, it automatically uses this sealed-envelope system. You don't have to do anything special. Privacy is just... how it works.<br><br>
+      If someone searches your Zodl wallet address online, they find nothing. There is no website in the world that can show your balance or transaction history."
+    </div>
+
+    <hr class="my-10 border-gray-100" />
+
+    <!-- SECTION 4 -->
+    <h2>Section 4 (15–25 min): Live Wallet Demo</h2>
+    <Callout type="tip" label="Facilitator prep">
+      <p>
+        Have your own phone with Zodl already installed and a small test balance.
+        You'll do a live send to the participant's new wallet to confirm it works.
+        Have pen and paper for each participant for their seed phrase.
+      </p>
+    </Callout>
+    <ol class="steps">
+      <li>
+        <strong>Download Zodl (2 min)</strong>
+        <p>"Open your app store and search for Zodl. Install the free app — it's from Zcash Open Development Lab."</p>
+      </li>
+      <li>
+        <strong>Create wallet + seed phrase (4 min)</strong>
+        <p>"Tap 'Create new wallet.' You'll see 24 words. Write them on the paper in front of you — right now. This is the only time you'll see them this clearly. Don't photograph them."</p>
+        <p><em>Wait for participants to write. Confirm everyone has all 24 words before continuing.</em></p>
+      </li>
+      <li>
+        <strong>Find the Receive address (1 min)</strong>
+        <p>"Tap 'Receive.' You'll see a long address and a QR code. This is your private mailbox. Show me your QR code."</p>
+      </li>
+      <li>
+        <strong>Live test send (3 min)</strong>
+        <p>"I'm going to send a small amount to your wallet right now." <em>(Scan participant's QR code and send $1–2 worth of ZEC.)</em> "Watch your balance update. That transaction just happened — and it doesn't exist in any public record."</p>
+      </li>
+    </ol>
+
+    <hr class="my-10 border-gray-100" />
+
+    <!-- SECTION 5 -->
+    <h2>Section 5 (25–30 min): Wrap-Up</h2>
+    <div class="script-block">
+      <p class="script-label">Facilitator script</p>
+      "You now have a private financial account that nobody can monitor. Remember:<br><br>
+      One — your 24 words are the key to your wallet. Store them somewhere safe, not on your phone.<br><br>
+      Two — only use this wallet on a phone your partner doesn't control. Mobile data only, not home WiFi.<br><br>
+      Three — start small. Even $20 a week from someone you trust adds up. The goal is options. Options mean you can make a choice, on your timeline, when you're ready."
+    </div>
+    <p><strong>Hand out the printed one-page summary.</strong> Available to print from <a href="/download/">the download page</a>.</p>
+
+    <hr class="my-10 border-gray-100" />
+
+    <!-- FAQ -->
+    <h2>Common client questions &amp; answers</h2>
+    <div class="space-y-6 mt-6">
+      {faq.map(({ q, a }) => (
+        <div>
+          <p class="font-bold text-shield-deep">{q}</p>
+          <p class="text-gray-600 text-sm leading-relaxed mt-1">{a}</p>
+        </div>
+      ))}
+    </div>
+
+    <hr class="my-10 border-gray-100" id="shelter-wallet" />
+
+    <!-- SHELTER WALLET SETUP -->
+    <h2>Setting up your shelter's ZEC donation wallet</h2>
+    <p class="text-gray-600 leading-relaxed">
+      Your organization can accept ZEC donations and distribute emergency funds to clients.
+    </p>
+    <ol class="steps mt-6">
+      {[
+        ['Designate two or three "key holders"', 'These staff members each hold part of the wallet authority. No single person can move funds — all major withdrawals require two signatures. This protects the organization and prevents misuse.'],
+        ["Install Zodl on the organization's secure device", 'This should be a device that stays at the shelter — not a personal phone. Create a new wallet and store the seed phrase in your secure document system.'],
+        ['Get your donation address', 'Tap "Receive" — your shielded address is what donors use. Share this on your website, in grant applications, or with individual donors.'],
+        ['Receive donations', 'Donors send ZEC to your shelter address privately. Send them to the Donors page for a step-by-step guide.'],
+        ['Distribute to clients', 'When a client completes their wallet setup, send them a small amount from the shelter wallet. This gives them their first shielded fund — privately and securely.'],
+        ['Convert to USD when needed', "Create an organizational account on a major exchange. Transfer ZEC, sell it for USD, and withdraw to your organization's bank account. This creates an auditable record for your accounting."],
+      ].map(([title, body]) => (
+        <li>
+          <strong>{title}</strong>
+          <p>{body}</p>
+        </li>
+      ))}
+    </ol>
+
+    <Callout type="tip" label="Accounting note">
+      <p>
+        ZEC received as donations should be tracked at fair market value on the date received.
+        Consult your organization's accountant — treatment is similar to other in-kind crypto donations.
+        In the US, donors can receive a tax receipt for ZEC donations.
+      </p>
+    </Callout>
+
+  </article>
+  </section>
+
+  <div class="bg-sand border-t border-sand-dark py-12 px-6 text-center">
+    <p class="text-gray-500 mb-6">Need printable versions of this guide and all client handouts?</p>
+    <a href="/download/" class="btn btn-primary btn-lg">Download Everything for Print →</a>
+  </div>
+
+</BaseLayout>
