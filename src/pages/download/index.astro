@@ -1,0 +1,145 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Callout    from '@components/Callout.astro';
+
+const moduleHandouts = [
+  { num:'1️⃣', href:'/learn/1-why-privacy/', title:'Why Financial Privacy = Safety', desc:"Key statistics, Linh's story, and the core argument." },
+  { num:'2️⃣', href:'/learn/2-crypto-trap/', title:'The Crypto Trap', desc:'Bitcoin vs Zcash comparison. Why transparent chains are dangerous.' },
+  { num:'3️⃣', href:'/learn/3-what-zcash/', title:'What Zcash Does', desc:'The sealed envelope analogy. Plain language explanation of shielded transactions.' },
+  { num:'4️⃣', href:'/learn/4-wallet-setup/', title:'Wallet Setup', desc:'Step-by-step setup checklist. What to do with the seed phrase.' },
+  { num:'5️⃣', href:'/learn/5-receiving/', title:'Receiving Money Safely', desc:'How to share your address and what your supporters need to do.' },
+  { num:'6️⃣', href:'/learn/6-spending/', title:'Spending Safely', desc:'The full chain checklist. Stalkerware detection. What not to do.' },
+  { num:'7️⃣', href:'/learn/7-exit-plan/', title:'Exit Fund Plan', desc:"6-month framework, costs table, and Linh's ending." },
+  { num:'🤝', href:'/advocates/workshop-guide/', title:'Advocate Workshop Guide', desc:'Complete 30-minute facilitator curriculum with script, demo steps, and FAQ.' },
+];
+
+const languages = [
+  { flag:'🇺🇸', lang:'English',    status:'available' },
+  { flag:'🇪🇸', lang:'Español',    status:'coming' },
+  { flag:'🇫🇷', lang:'Français',   status:'coming' },
+  { flag:'🇸🇦', lang:'العربية',    status:'coming' },
+  { flag:'🇰🇪', lang:'Swahili',    status:'coming' },
+  { flag:'🇧🇷', lang:'Português',  status:'coming' },
+  { flag:'🇮🇳', lang:'हिन्दी',     status:'coming' },
+  { flag:'🇵🇰', lang:'اردو',       status:'coming' },
+];
+---
+<BaseLayout title="Download Offline Guides" activePath="/download/">
+
+  <div class="page-hero px-6">
+    <div class="max-w-3xl mx-auto">
+      <span class="section-label">Offline access</span>
+      <h1>Download Everything</h1>
+      <p class="text-gray-600 text-lg mt-2 leading-relaxed">
+        All ShieldHer guides are available for offline use — so you can read them without internet,
+        print them for clients, or save them safely on a device your partner doesn't monitor.
+      </p>
+    </div>
+  </div>
+
+  <section class="py-12 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+
+      <Callout type="tip" label="Safe download tip">
+        <p>
+          Download these files to a device your partner doesn't access, or to a USB drive you keep at a trusted person's home.
+          If downloading to a shared device, use private/incognito mode and clear your downloads folder after saving elsewhere.
+        </p>
+      </Callout>
+
+      <!-- Full packages -->
+      <p class="section-label mt-12">Complete guides</p>
+      <h2>Full offline packages</h2>
+      <div class="grid sm:grid-cols-2 gap-6 mt-6">
+        <div class="resource-card">
+          <span class="text-3xl" aria-hidden="true">📦</span>
+          <h4 class="text-shield-deep">Complete ShieldHer Site (ZIP)</h4>
+          <p class="text-sm text-gray-500 flex-1">The entire website as a ZIP file. Open index.html in any browser — no internet needed.</p>
+          <span class="tag self-start">Recommended</span>
+          <a
+            href="#"
+            class="btn btn-primary btn-sm self-start mt-2"
+            onclick="alert('In the deployed version, this downloads the full site ZIP. For now, you can ZIP the dist/ folder after running npm run build.'); return false;"
+          >
+            Download ZIP →
+          </a>
+        </div>
+        <div class="resource-card">
+          <span class="text-3xl" aria-hidden="true">📄</span>
+          <h4 class="text-shield-deep">All Modules — Print-Friendly</h4>
+          <p class="text-sm text-gray-500 flex-1">Open any module page and use your browser's Print function. All pages include print-optimized CSS.</p>
+          <span class="tag self-start">For printing</span>
+          <a href="/learn/" class="btn btn-secondary btn-sm self-start mt-2">Go to modules →</a>
+        </div>
+      </div>
+
+      <hr class="my-12 border-gray-100" />
+
+      <!-- Individual handouts -->
+      <p class="section-label">Individual module handouts</p>
+      <h2>One-page client handouts</h2>
+      <p class="text-gray-500 mt-2 mb-8 leading-relaxed">
+        Each module has a condensed one-page handout — ideal for DV counselors to print and distribute.
+        Print in black and white; works on any printer.
+      </p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {moduleHandouts.map(({ num, href, title, desc }) => (
+          <div class="resource-card gap-2">
+            <span class="text-2xl" aria-hidden="true">{num}</span>
+            <h4 class="text-shield-deep text-sm">{title}</h4>
+            <p class="text-xs text-gray-500 leading-relaxed flex-1">{desc}</p>
+            <a href={href} class="btn btn-secondary btn-sm self-start mt-1">View &amp; Print →</a>
+          </div>
+        ))}
+      </div>
+
+      <hr class="my-12 border-gray-100" />
+
+      <!-- Search box (Pagefind) -->
+      <p class="section-label">Search all guides</p>
+      <h2>Find what you need</h2>
+      <p class="text-gray-500 mt-2 mb-6 text-sm">
+        Search works offline after first visit — no server, no tracking.
+      </p>
+      <div id="search-container">
+        <link href="/_pagefind/pagefind-ui.css" rel="stylesheet" />
+        <div id="pagefind-search"></div>
+        <script src="/_pagefind/pagefind-ui.js" is:inline></script>
+        <script is:inline>
+          window.addEventListener('load', () => {
+            if (typeof PagefindUI !== 'undefined') {
+              new PagefindUI({
+                element: '#pagefind-search',
+                showSubResults: true,
+                resetStyles: false,
+              });
+            }
+          });
+        </script>
+      </div>
+
+      <hr class="my-12 border-gray-100" />
+
+      <!-- Languages -->
+      <p class="section-label">Translations</p>
+      <h2>Available languages</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
+        {languages.map(({ flag, lang, status }) => (
+          <div class="bg-white border border-gray-200 rounded-lg px-4 py-3 flex items-center gap-2 text-sm font-semibold">
+            <span aria-hidden="true">{flag}</span>
+            <span>{lang}</span>
+            <span class:list={['ml-auto text-xs font-normal', status === 'available' ? 'text-shield-mid' : 'text-gray-400']}>
+              {status === 'available' ? '✓' : status === 'progress' ? 'In progress' : 'Soon'}
+            </span>
+          </div>
+        ))}
+      </div>
+      <p class="text-gray-400 text-sm mt-4">
+        Can you help translate? Contact the Zcash Foundation or submit translations via the project repository.
+        All translations are reviewed by native speakers who are also survivors or DV advocates.
+      </p>
+
+    </div>
+  </section>
+
+</BaseLayout>
