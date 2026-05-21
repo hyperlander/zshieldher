@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+<BaseLayout title="You're Offline" showBanner={false}>
+  <div class="min-h-[70vh] flex items-center justify-center text-center px-6 py-20">
+    <div class="max-w-md">
+      <p class="text-5xl mb-6" aria-hidden="true">📶</p>
+      <h1>You're offline</h1>
+      <p class="text-gray-500 mt-4 mb-6 leading-relaxed">
+        No internet connection right now. If you visited this site before, your browser may have
+        saved some pages — try navigating to a module you've already read.
+      </p>
+      <p class="text-gray-400 text-sm mb-10">
+        All ShieldHer guides are also available as offline downloads — see the Download page for a
+        ZIP file you can save to any device.
+      </p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="/" class="btn btn-primary">Try home →</a>
+        <a href="/learn/" class="btn btn-secondary">Try modules →</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
