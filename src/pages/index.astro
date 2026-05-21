@@ -1,0 +1,197 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Callout    from '@components/Callout.astro';
+import StatCard   from '@components/StatCard.astro';
+---
+<BaseLayout title="Financial Privacy for Safety" activePath="/">
+
+  <!-- ── HERO ─────────────────────────────────────── -->
+  <section class="hero-section px-6" aria-labelledby="hero-heading">
+    <div class="relative max-w-3xl mx-auto text-center">
+      <!-- subtle pattern overlay -->
+      <div class="absolute inset-0 opacity-[0.03]" aria-hidden="true"
+           style="background-image:url('data:image/svg+xml,%3Csvg width=60 height=60 xmlns=http://www.w3.org/2000/svg%3E%3Cg fill=%23fff fill-opacity=1%3E%3Cpath d=M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z/%3E%3C/g%3E%3C/svg%3E')">
+      </div>
+      <div class="relative">
+        <p class="text-4xl mb-6" aria-hidden="true">🛡️</p>
+        <div class="inline-block bg-emerald-900/40 text-emerald-300 text-xs font-black tracking-widest uppercase px-4 py-1.5 rounded-full border border-emerald-700/40 mb-6">
+          Financial Privacy = Physical Safety
+        </div>
+        <h1 id="hero-heading" class="text-white font-black leading-tight mb-6" style="font-size:clamp(2rem,5vw,3rem);letter-spacing:-0.03em">
+          Your money should be <em class="not-italic text-emerald-300">yours.</em><br>Not theirs.
+        </h1>
+        <p class="text-white/85 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+          Financial control is how abusers maintain power — and track escapes.
+          Learn why Zcash's shielded transactions are the only cryptocurrency
+          that keeps your money completely invisible to those who would use it against you.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="/learn/" class="btn btn-white btn-lg">Start Learning →</a>
+          <a href="/get-help/" class="btn btn-amber btn-lg">Get Help Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── THREE PATHS ──────────────────────────────── -->
+  <section class="py-20 px-6 bg-white" aria-labelledby="paths-heading">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="section-label">Where would you like to start?</span>
+        <h2 id="paths-heading">Who are you here for?</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {[
+          { href: '/learn/',     icon: '🌱', title: 'I need help',       cta: 'Start the guide →',
+            body: "I'm in a situation where my finances are controlled or monitored. I want to learn how to protect my money privately." },
+          { href: '/advocates/', icon: '🤝', title: 'I help others',     cta: 'Advocate resources →',
+            body: "I'm a counselor, social worker, or shelter staff. I want to teach survivors about financial privacy tools." },
+          { href: '/donors/',    icon: '💚', title: 'I want to support', cta: 'How to help →',
+            body: 'I want to send emergency funds to someone safely, or donate to survivor organizations — privately.' },
+        ].map(({ href, icon, title, body, cta }) => (
+          <a href={href} class="path-card">
+            <span class="text-4xl" aria-hidden="true">{icon}</span>
+            <h3 class="text-shield-deep">{title}</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">{body}</p>
+            <span class="path-cta-pill">{cta}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── THE CORE PROBLEM ──────────────────────────── -->
+  <section class="py-20 px-6 bg-shield-xlight" aria-labelledby="problem-heading">
+    <div class="max-w-2xl mx-auto">
+      <span class="section-label">The problem</span>
+      <h2 id="problem-heading">Financial control is the #1 tool of abuse</h2>
+      <p class="text-gray-600 text-lg mt-4 leading-relaxed">
+        99% of domestic violence cases involve financial abuse. Abusers monitor bank accounts,
+        restrict spending, and track savings to maintain control — and to catch escape attempts.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-4 my-10">
+        <StatCard num="99%" label="of DV cases involve financial abuse" />
+        <StatCard num="700M+" label="women worldwide experience intimate partner violence" />
+        <StatCard num="#1" label="reason survivors cannot leave: lack of secret funds" />
+      </div>
+      <Callout type="story" label="A story">
+        <p>
+          Linh saved $200 in cash over six months — hidden in a coat pocket.
+          Her partner found it during laundry. That night was the worst of her life.
+        </p>
+        <p>
+          <strong>What if Linh's $200 had been digital, and completely invisible?
+          Not just hard to find — mathematically impossible to detect?</strong>
+        </p>
+      </Callout>
+    </div>
+  </section>
+
+  <!-- ── BITCOIN WARNING / ZCASH COMPARISON ────────── -->
+  <section class="py-20 px-6 bg-white" aria-labelledby="comparison-heading">
+    <div class="max-w-2xl mx-auto">
+      <span class="section-label">The crypto trap</span>
+      <h2 id="comparison-heading">
+        Not all crypto protects you. Most of it makes things
+        <span class="text-red-700">worse.</span>
+      </h2>
+      <p class="text-gray-600 text-lg mt-4 leading-relaxed">
+        Bitcoin and most other cryptocurrencies have a <strong>fully public transaction history</strong>
+        — anyone can track every payment, forever. No password. No subpoena.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-4 my-10">
+        <div class="coin-card coin-card-bad">
+          <p class="text-xs font-black tracking-widest uppercase text-red-700 mb-2">⚠ Bitcoin &amp; Most Crypto</p>
+          <h4 class="text-gray-900 mb-3">A public postcard</h4>
+          <ul class="space-y-1 text-sm text-gray-600">
+            {['Every transaction permanently visible','Anyone with your address can track you','No subpoena needed','Worse than a bank statement'].map(t => (
+              <li class="flex gap-2 items-start"><span class="text-red-600 font-bold flex-shrink-0">✗</span>{t}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="coin-card coin-card-good">
+          <p class="text-xs font-black tracking-widest uppercase text-shield-mid mb-2">✓ Zcash Shielded</p>
+          <h4 class="text-gray-900 mb-3">A sealed envelope</h4>
+          <ul class="space-y-1 text-sm text-gray-600">
+            {['Amount, sender & receiver hidden','Mathematically impossible to trace','Private by default in Zodl wallet','No technical knowledge needed'].map(t => (
+              <li class="flex gap-2 items-start"><span class="text-shield-mid font-bold flex-shrink-0">✓</span>{t}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <a href="/learn/2-crypto-trap/" class="btn btn-secondary">
+        Learn why Bitcoin is dangerous for survivors →
+      </a>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ──────────────────────────────── -->
+  <section class="py-20 px-6 bg-sand" aria-labelledby="how-heading">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="section-label">How it works</span>
+        <h2 id="how-heading">Four steps to a private emergency fund</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {[
+          { icon:'📖', n:'1', h:'Learn',              b:'Work through 7 short modules in plain language — no crypto knowledge needed.' },
+          { icon:'📱', n:'2', h:'Set up your wallet', b:'Download Zodl (10 minutes). Every transaction is automatically private.' },
+          { icon:'💚', n:'3', h:'Build your fund',    b:'Receive small amounts from trusted friends, NGOs, or your own income — invisibly.' },
+          { icon:'🚪', n:'4', h:'Exit when ready',    b:'Your shielded fund gives you options. Options give you time. Time gives you safety.' },
+        ].map(({ icon, h, b }) => (
+          <div class="flex flex-col gap-2">
+            <span class="text-3xl" aria-hidden="true">{icon}</span>
+            <h4 class="text-shield-deep">{h}</h4>
+            <p class="text-sm text-gray-500 leading-relaxed">{b}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href="/learn/" class="btn btn-primary btn-lg">Begin the guide →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRIVACY PROMISE ───────────────────────────── -->
+  <section class="py-12 px-6 bg-white">
+    <div class="max-w-2xl mx-auto">
+      <Callout type="tip" label="Privacy promise">
+        <p>
+          This website collects <strong>zero personal data</strong>.
+          No accounts, no email, no analytics, no cookies.
+          Your learning progress is stored only on your own device.
+          This site works in Tor Browser. You can download everything for offline use.
+        </p>
+      </Callout>
+    </div>
+  </section>
+
+  <!-- ── CTA ──────────────────────────────────────── -->
+  <section class="py-24 px-6 text-white text-center" style="background:linear-gradient(135deg,#1a4a3a,#0d2b20)">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-white">Your money. Your shield. Your life.</h2>
+      <p class="text-white/80 mt-4 mb-10 leading-relaxed">
+        Financial privacy is not about hiding something wrong.
+        It is about staying safe long enough to get to safety.
+        Start with Module 1 — it takes 5 minutes to read.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/learn/1-why-privacy/" class="btn btn-white btn-lg">Start Module 1 →</a>
+        <a href="/download/" class="btn" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.8)">
+          Download guides offline
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SAFE BROWSING TIP ─────────────────────────── -->
+  <div class="bg-sand border-t border-sand-dark py-4 px-6 text-center text-sm text-gray-500">
+    <strong class="text-shield-deep">Safe browsing tip:</strong>
+    Open this site in <strong>Private / Incognito mode</strong> so it won't appear in your history.
+    Press <kbd class="bg-white border border-gray-300 rounded px-1.5 py-0.5 text-xs font-mono">Alt+X</kbd>
+    anytime to leave instantly.
+  </div>
+
+</BaseLayout>
