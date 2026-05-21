@@ -308,6 +308,25 @@
     @apply text-white/60 py-12 px-6 mt-auto;
   }
 
+  /* ── Footer donation address pill ── */
+  .footer-addr-pill {
+    @apply inline-flex items-center gap-1.5 font-mono text-xs text-white/35
+           bg-white/5 border border-white/10 rounded-full
+           px-3 py-1.5 cursor-pointer transition-all duration-150
+           hover:bg-white/10 hover:text-white/70 hover:border-white/20;
+  }
+  .footer-addr-pill--copied {
+    @apply bg-emerald-900/40 border-emerald-700/50 text-emerald-400;
+  }
+
+  /* ── Footer zcash.me badge ── */
+  .footer-zcashme-badge {
+    @apply inline-flex items-center gap-1 text-xs text-white/35 no-underline
+           bg-white/5 border border-white/10 rounded-full px-3 py-1.5
+           transition-all duration-150
+           hover:bg-shield-mid/30 hover:text-white/70 hover:border-shield-mid/40;
+  }
+
   /* ── Safety banner ── */
   .safety-banner { @apply bg-shield-deep text-white text-center py-3 px-6; }
   .safety-banner a { @apply text-emerald-300 no-underline; }

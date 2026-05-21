@@ -1,21 +1,23 @@
 ---
 import ShieldIcon from './ShieldIcon.astro';
 
+const DONATION_ADDR = 'u1657p90kyutkvqzlwsjys6qlg7jpx8ulkjs2h8r3cgyvl2x0vze0xtpyg5c7gv068j6nuh2vj7vtch3xurey669wev0ptmkd747cuk07jk2e67sa0n0d56emasdkxn95362mmkd74y5ddy8u6aet5c8gvm7xnfmy0qkch0tjpcgtkc6rd';
+const ADDR_SHORT    = DONATION_ADDR.slice(0, 8) + '…' + DONATION_ADDR.slice(-6);
+
 const modules = [
-  { href: '/learn/1-why-privacy/',    label: '1 — Why Privacy' },
-  { href: '/learn/2-crypto-trap/',    label: '2 — Crypto Trap' },
-  { href: '/learn/3-what-zcash/',     label: '3 — What Zcash Does' },
-  { href: '/learn/4-wallet-setup/',   label: '4 — Wallet Setup' },
-  { href: '/learn/5-receiving/',      label: '5 — Receiving' },
-  { href: '/learn/6-spending/',       label: '6 — Spending' },
-  { href: '/learn/7-exit-plan/',      label: '7 — Exit Plan' },
+  { href: '/learn/1-why-privacy/',  label: '1 — Why Privacy' },
+  { href: '/learn/2-crypto-trap/',  label: '2 — Crypto Trap' },
+  { href: '/learn/3-what-zcash/',   label: '3 — What Zcash Does' },
+  { href: '/learn/4-wallet-setup/', label: '4 — Wallet Setup' },
+  { href: '/learn/5-receiving/',    label: '5 — Receiving' },
+  { href: '/learn/6-spending/',     label: '6 — Spending' },
+  { href: '/learn/7-exit-plan/',    label: '7 — Exit Plan' },
 ];
 const help = [
-  { href: '/get-help/',       label: 'Emergency Resources' },
-  { href: '/advocates/',      label: 'For Advocates' },
-  { href: '/donors/',         label: 'Donors & Allies' },
-  { href: '/donors/#donate',  label: 'Donate ZEC to ZShieldHer' },
-  { href: '/download/',       label: 'Download Offline' },
+  { href: '/get-help/',   label: 'Emergency Resources' },
+  { href: '/advocates/',  label: 'For Advocates' },
+  { href: '/donors/',     label: 'Donors & Allies' },
+  { href: '/download/',   label: 'Download Offline' },
 ];
 ---
 <footer class="site-footer mt-auto">
@@ -50,8 +52,91 @@ const help = [
     </div>
   </div>
 
+  <!-- ── Bottom bar ── -->
   <div class="max-w-6xl mx-auto mt-10 pt-6 border-t border-white/10 flex flex-wrap justify-between gap-2 text-xs text-white/40">
     <span>© ZShieldHer — A Zcash Education Initiative. No rights reserved — share freely.</span>
     <span>No tracking · No cookies · No accounts · Alt+X to leave instantly</span>
   </div>
+
+  <!-- ── Donation row ── -->
+  <div class="max-w-6xl mx-auto mt-4 pt-4 border-t border-white/5 flex flex-wrap items-center justify-center gap-3">
+
+    <span class="text-xs text-white/35 font-semibold tracking-wide uppercase">Donate ZEC</span>
+
+    <!-- Address pill -->
+    <button
+      id="footer-addr-btn"
+      data-addr={DONATION_ADDR}
+      class="footer-addr-pill group"
+      title="Click to copy full address"
+      aria-label="Copy donation address to clipboard"
+    >
+      <!-- Copy icon -->
+      <svg id="footer-copy-icon" width="12" height="12" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+        class="flex-shrink-0 transition-colors">
+        <rect x="9" y="9" width="13" height="13" rx="2"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+      <!-- Check icon (hidden by default) -->
+      <svg id="footer-check-icon" width="12" height="12" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+        class="flex-shrink-0 hidden text-emerald-400">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+
+      <span id="footer-addr-text" class="font-mono">{ADDR_SHORT}</span>
+    </button>
+
+    <!-- zcash.me badge -->
+    <a
+      href="https://zcash.me/zshieldher"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="footer-zcashme-badge"
+    >
+      zcash.me/zshieldher
+      <svg width="9" height="9" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+        <polyline points="15 3 21 3 21 9"/>
+        <line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+    </a>
+
+  </div>
 </footer>
+
+<script>
+  const btn       = document.getElementById('footer-addr-btn') as HTMLButtonElement | null;
+  const copyIcon  = document.getElementById('footer-copy-icon');
+  const checkIcon = document.getElementById('footer-check-icon');
+  const addrText  = document.getElementById('footer-addr-text');
+  let timer: ReturnType<typeof setTimeout>;
+
+  btn?.addEventListener('click', async () => {
+    const addr = btn.dataset.addr ?? '';
+    try {
+      await navigator.clipboard.writeText(addr);
+    } catch {
+      const r = document.createRange();
+      r.selectNodeContents(addrText!);
+      window.getSelection()?.removeAllRanges();
+      window.getSelection()?.addRange(r);
+    }
+
+    // Swap to check state
+    copyIcon?.classList.add('hidden');
+    checkIcon?.classList.remove('hidden');
+    if (addrText) addrText.textContent = 'Copied!';
+    btn.classList.add('footer-addr-pill--copied');
+
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      copyIcon?.classList.remove('hidden');
+      checkIcon?.classList.add('hidden');
+      if (addrText) addrText.textContent = btn.dataset.addr!.slice(0, 8) + '…' + btn.dataset.addr!.slice(-6);
+      btn.classList.remove('footer-addr-pill--copied');
+    }, 2000);
+  });
+</script>
