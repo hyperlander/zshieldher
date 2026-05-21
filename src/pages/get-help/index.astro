@@ -1,0 +1,105 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Callout    from '@components/Callout.astro';
+
+const hotlines = [
+  { flag:'🇺🇸', region:'United States', lines:['National DV Hotline: 1-800-799-7233','Crisis Text Line: Text HOME to 741741','RAINN: 1-800-656-4673','Loveisrespect (teens): 1-866-331-9474'] },
+  { flag:'🇬🇧', region:'United Kingdom', lines:['National DV Helpline: 0808 2000 247','Women\'s Aid: womensaid.org.uk','Refuge: 0808 2000 247','Men\'s Advice Line: 0808 801 0327'] },
+  { flag:'🇨🇦', region:'Canada', lines:['ShelterSafe: sheltersafe.ca','Kids Help Phone: 1-800-668-6868','Assaulted Women\'s Helpline: 1-866-863-0511','Crisis Services Canada: 1-833-456-4566'] },
+  { flag:'🇦🇺', region:'Australia', lines:['1800RESPECT: 1800 737 732','Lifeline: 13 11 14','Safe Steps (VIC): 1800 015 188','DV Connect (QLD): 1800 811 811'] },
+  { flag:'🌍', region:'International', lines:['UN Women: unwomen.org','Global DV Directory: hotpeachpages.net','UNHCR Refugee Protection: unhcr.org/emergency','Chayn (online safety): chayn.co'] },
+  { flag:'🔒', region:'Technology Safety', lines:['Safety Net Project: techsafety.org','Coalition Against Stalkerware: stopstalkerware.org','Specialists in stalkerware, device safety & digital privacy'] },
+];
+---
+<BaseLayout title="Get Help Now" activePath="/get-help/">
+
+  <div class="page-hero px-6" style="background:#fdecea; border-bottom-color:#ef9a9a;">
+    <div class="max-w-3xl mx-auto">
+      <span class="section-label" style="color:#c62828;">Emergency Resources</span>
+      <h1 style="color:#c62828;">Get Help Now</h1>
+      <p class="text-gray-700 text-lg mt-2 leading-relaxed">
+        If you are in danger right now, contact a crisis line immediately.
+        Financial planning comes later. Your safety comes first.
+      </p>
+    </div>
+  </div>
+
+  <section class="py-12 px-6 bg-white">
+    <div class="max-w-3xl mx-auto">
+
+      <!-- Emergency block -->
+      <div class="help-emergency">
+        <h3 class="text-white text-xl font-bold">🚨 Emergency — If you are in immediate danger</h3>
+        <p class="text-white/90 mt-2">Call emergency services or a crisis hotline right now. You don't need to have a plan yet.</p>
+        <p class="text-3xl font-black tracking-widest mt-4">US: 911</p>
+        <div class="mt-4">
+          <strong>National DV Hotline (US):</strong>
+          <p class="text-2xl font-black tracking-wide mt-1">1-800-799-7233</p>
+          <p class="text-white/80 text-sm mt-1">Text START to 88788 · Chat at thehotline.org · Available 24/7</p>
+        </div>
+      </div>
+
+      <!-- Crisis lines by region -->
+      <h2 class="mt-12">Crisis lines by region</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        {hotlines.map(({ flag, region, lines }) => (
+          <div class="resource-card">
+            <span class="text-2xl" aria-hidden="true">{flag}</span>
+            <h4 class="text-shield-deep">{region}</h4>
+            <ul class="space-y-1">
+              {lines.map(l => <li class="text-sm text-gray-500">{l}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <hr class="my-12 border-gray-100" />
+
+      <!-- Financial help -->
+      <h2>Emergency financial assistance</h2>
+      <p class="text-gray-600 mt-2 mb-8 leading-relaxed">
+        The following types of organizations may be able to provide emergency funds —
+        including ZEC for survivors who need a private financial starting point.
+        Contact your local DV organization to see what's available in your area.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-6">
+        {[
+          { icon:'🏦', title:'Emergency ZEC for Survivors',
+            body:'Some partner shelters and NGOs maintain ZEC emergency funds for survivors who have completed the wallet setup (Module 4). Ask your shelter advocate to connect you.',
+            href:'/advocates/', cta:'Find an advocate →' },
+          { icon:'💵', title:'Emergency Cash Assistance',
+            body:"Many DV shelters have emergency funds for immediate needs — transport, accommodation, food. You don't need to have left already to ask for planning help.",
+            href:'https://www.thehotline.org/resources/housing-options-for-domestic-violence-survivors/', cta:'Housing resources →' },
+          { icon:'⚖️', title:'Free Legal Help',
+            body:"Protective orders, custody, divorce — DV legal advocates can often help at no cost. You don't need to be in a shelter to access legal help.",
+            href:'https://www.womenslaw.org/', cta:'WomensLaw.org →' },
+        ].map(({ icon, title, body, href, cta }) => (
+          <div class="resource-card">
+            <span class="text-3xl" aria-hidden="true">{icon}</span>
+            <h4 class="text-shield-deep">{title}</h4>
+            <p class="text-sm text-gray-500 leading-relaxed flex-1">{body}</p>
+            <a href={href} class="btn btn-primary btn-sm self-start mt-2" target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}>{cta}</a>
+          </div>
+        ))}
+      </div>
+
+      <hr class="my-12 border-gray-100" />
+
+      <Callout type="tip" label="If you're planning ahead — safe browsing reminder">
+        <p>
+          Use <strong>Private / Incognito mode</strong> (doesn't save history).<br>
+          Use <strong>mobile data</strong>, not home WiFi (routers log visited sites).<br>
+          Press <strong>Alt + X</strong> or the red button above to leave instantly.<br>
+          Consider a borrowed phone or library computer for sensitive research.
+        </p>
+      </Callout>
+
+      <div class="mt-10 text-center">
+        <p class="text-gray-500 mb-6">Ready to start building your financial safety plan?</p>
+        <a href="/learn/" class="btn btn-primary btn-lg">Start the learning guide →</a>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>
