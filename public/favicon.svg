@@ -1,4 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
   <rect width="64" height="64" rx="12" fill="#1a4a3a"/>
-  <path d="M20 18 L44 18 L38 30 L44 30 L20 46 L26 34 L20 34 Z" fill="#f5f0e8" opacity="0.95"/>
+  <!-- Shield shape -->
+  <path d="M32 10 C20 10 14 16 14 22 L14 38 C14 50 32 56 32 56 C32 56 50 50 50 38 L50 22 C50 16 44 10 32 10 Z" fill="#f5f0e8"/>
+  <!-- Inner Z mark (Zcash link) -->
+  <path d="M24 24 L40 24 L24 40 L40 40" stroke="#1a4a3a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

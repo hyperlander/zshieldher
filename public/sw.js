@@ -1,8 +1,8 @@
-/* ShieldHer Service Worker — Offline Support
+/* ZShieldHer Service Worker — Offline Support
    Cache-first for assets, network-first for HTML pages.
    No external requests, no telemetry, no analytics.      */
 
-const CACHE_NAME = 'shieldher-v1';
+const CACHE_NAME = 'zshieldher-v1';
 
 // Core shell — cached on install so the site works offline after first visit
 const PRECACHE = [

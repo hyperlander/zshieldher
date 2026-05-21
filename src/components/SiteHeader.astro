@@ -1,4 +1,6 @@
 ---
+import ShieldIcon from './ShieldIcon.astro';
+
 interface Props {
   activePath?: string;
 }
@@ -15,9 +17,9 @@ const navLinks = [
 
     <!-- Logo -->
     <a href="/" class="site-logo flex-shrink-0">
-      <span aria-hidden="true">🛡</span>
+      <ShieldIcon size={22} />
       <span>
-        ShieldHer
+        ZShieldHer
         <span class="block text-[0.6rem] font-normal opacity-70 tracking-widest uppercase leading-none">
           A Zcash Education Initiative
         </span>

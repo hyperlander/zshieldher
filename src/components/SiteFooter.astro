@@ -1,4 +1,6 @@
 ---
+import ShieldIcon from './ShieldIcon.astro';
+
 const modules = [
   { href: '/learn/1-why-privacy/',    label: '1 — Why Privacy' },
   { href: '/learn/2-crypto-trap/',    label: '2 — Crypto Trap' },
@@ -12,7 +14,7 @@ const help = [
   { href: '/get-help/',       label: 'Emergency Resources' },
   { href: '/advocates/',      label: 'For Advocates' },
   { href: '/donors/',         label: 'Donors & Allies' },
-  { href: '/donors/#donate',  label: 'Donate ZEC to ShieldHer' },
+  { href: '/donors/#donate',  label: 'Donate ZEC to ZShieldHer' },
   { href: '/download/',       label: 'Download Offline' },
 ];
 ---
@@ -20,7 +22,7 @@ const help = [
   <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
     <div>
       <div class="flex items-center gap-2 font-extrabold text-white text-base mb-3">
-        <span aria-hidden="true">🛡</span> ShieldHer
+        <ShieldIcon size={20} /> ZShieldHer
       </div>
       <p class="text-sm leading-relaxed">
         A Zcash education initiative for financial safety and privacy.
@@ -49,7 +51,7 @@ const help = [
   </div>
 
   <div class="max-w-6xl mx-auto mt-10 pt-6 border-t border-white/10 flex flex-wrap justify-between gap-2 text-xs text-white/40">
-    <span>© ShieldHer — A Zcash Education Initiative. No rights reserved — share freely.</span>
+    <span>© ZShieldHer — A Zcash Education Initiative. No rights reserved — share freely.</span>
     <span>No tracking · No cookies · No accounts · Alt+X to leave instantly</span>
   </div>
 </footer>

@@ -13,7 +13,7 @@ interface Props {
 
 const {
   title,
-  description = 'ShieldHer teaches women how financial privacy protects safety — and why Zcash shielded transactions are the only tool built for it.',
+  description = 'ZShieldHer teaches women how financial privacy protects safety — and why Zcash shielded transactions are the only tool built for it.',
   activePath  = '',
   showBanner  = true,
 } = Astro.props;
@@ -26,7 +26,7 @@ const {
   <meta name="description" content={description} />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="referrer" content="no-referrer" />
-  <title>{title} — ShieldHer</title>
+  <title>{title} — ZShieldHer</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <script src="/sw-register.js" defer></script>
   <slot name="head" />
@@ -59,7 +59,7 @@ const {
 
     // Hydrate module card completion badges from localStorage
     const progress: Record<string, boolean> =
-      JSON.parse(localStorage.getItem('shieldher_progress') ?? '{}');
+      JSON.parse(localStorage.getItem('zshieldher_progress') ?? '{}');
 
     document.querySelectorAll<HTMLElement>('.module-card[data-module]').forEach((card) => {
       const id = card.dataset.module!;

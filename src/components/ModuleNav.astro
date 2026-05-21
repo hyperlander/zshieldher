@@ -29,14 +29,14 @@ const { moduleId, prev, next } = Astro.props;
   const btn = document.querySelector<HTMLButtonElement>('.mark-done-btn');
   if (btn) {
     const id = btn.dataset.module!;
-    const done = () => localStorage.getItem('shieldher_progress')
-      ? JSON.parse(localStorage.getItem('shieldher_progress')!)[id] === true
+    const done = () => localStorage.getItem('zshieldher_progress')
+      ? JSON.parse(localStorage.getItem('zshieldher_progress')!)[id] === true
       : false;
     if (done()) { btn.textContent = '✓ Completed'; btn.style.background = '#27ae60'; }
     btn.addEventListener('click', () => {
-      const p = JSON.parse(localStorage.getItem('shieldher_progress') || '{}');
+      const p = JSON.parse(localStorage.getItem('zshieldher_progress') || '{}');
       p[id] = true;
-      localStorage.setItem('shieldher_progress', JSON.stringify(p));
+      localStorage.setItem('zshieldher_progress', JSON.stringify(p));
       btn.textContent = '✓ Completed';
       btn.style.background = '#27ae60';
     });
